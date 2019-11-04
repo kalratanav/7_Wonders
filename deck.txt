@@ -1,0 +1,15 @@
+resources cost resourcecost effect name freeChain Color age
+
+
+c0/o0/s0/w1/g0/l0/p0 0 null null Lumber_Yard null Brown 1
+c0/o0/s0/w1/g0/l0/p0 0 null null Lumber_Yard null Brown 1
+c0/o1/s0/w0/g0/l0/p0 0 null null Ore_Vein null Brown 1
+c0/o1/s0/w0/g0/l0/p0 0 null null Ore_Vein null Brown 1
+c1/o0/s0/w0/g0/l0/p0 0 null null Clay_Pool null Brown 1
+c1/o0/s0/w0/g0/l0/p0 0 null null Clay_Pool null Brown 1
+c0/o0/s1/w0/g0/l0/p0 0 null null Stone_Pit null Brown 1
+c0/o0/s1/w0/g0/l0/p0 0 null null Stone_Pit null Brown 1
+c0/o0/s.1/w.1/g0/l0/p0 1 null null Timber_Yard null Brown 1
+c0/o0/s.1/w.1/g0/l0/p0 1 null null Timber_Yard null Brown 1
+c.1/o.1/s0/w0/g0/l0/p0 1 null null Clay_Pit null Brown 1
+c.1/o.1/s0/w0/g0/l0/p0 1 null null Clay_Pit null Brown 1
