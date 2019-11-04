@@ -1,0 +1,46 @@
+public class Card {
+	private String resourceCost;
+	private String resource;
+	private String effect;
+	private String name;
+	private String freeChain;
+	private String color;
+	private int age;
+	public Card(String r, String rc, String e, String n, String fc, String c, int a) {
+		resourceCost = rc;
+		resource = r;
+		effect = e;
+		name = n;
+		freeChain = fc;
+		color = c;
+		age = a;
+	}
+	
+	public String getResourceCost() {
+		return resourceCost;
+	}
+	
+	public String getResource() {
+		return resource;
+	}
+	
+	public String getEffect() {
+		return effect;
+	}
+	
+	public String getFreeChain() {
+		return freeChain;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getColor() {
+		return color;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+}
