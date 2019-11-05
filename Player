@@ -1,0 +1,160 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.TreeSet;
+public class Player
+{
+	private ArrayList<Card> playerHand;
+	private int victoryPoints;
+	private int numCoins;
+	private int militaryPoints;
+	private int militaryDefeats;
+	private int militaryVictories;
+	private Wonder wonder;
+	private ArrayList<String> wonderBenefits;
+	public Player(Wonder won, ArrayList<Card> initialHand)
+	{
+		numCoins = 3;
+		victoryPoints = 0;
+		militaryPoints = 0;
+		militaryDefeats = 0;
+		militaryVictories = 0;
+		wonder = won;
+		playerHand = initialHand;
+	}
+	public void removeCard(Card card)
+	{
+		playerHand.remove(card);
+	}
+	public int calcVictoryPoints()
+	{
+		  Iterator<String> colors = wonder.getCardsPlaced().keySet().iterator();
+		while(colors.hasNext())
+		{
+			String color = colors.next();
+			if(!(color.equals("brown")||color.equals("silver")))
+			{
+			  Iterator<Card> cards = wonder.getCardsPlaced().get(color).iterator();
+			  while(cards.hasNext())
+			  {
+			    Card card = cards.next();
+			    if(card.getName().contains("guild"))
+			    {
+			       int numVictory = Integer.parseInt(card.getEffect().charAt(0));
+			       Player a;
+			       Player b;
+			       int colorFlag = 0;
+			       String colorToSearch = "";
+				   String effect = card.getEffect();
+				
+						if(effect.contains("green"))
+							colorToSearch = "green";
+						else if(effect.contains("blue"))
+							colorToSearch = "blue";
+						else if(effect.contains("red"))
+							colorToSearch = "red";
+						else if(effect.contains("yellow"))
+							colorToSearch = "yellow";
+						else if(effect.contains("purple"))
+							colorToSearch = "purple";
+						else if(effect.contains("gray"))
+							colorToSearch = "gray";
+						 int addVictoryPoints = Integer.parseInt(effect.substring(effect.lastIndexOf("gives") + 1,effect.indexOf("victory")));
+						for(int i = 0;i<board.getPlayers().length;i++)
+						{
+							if(i!=board.getCurrentPlayer())
+							{
+								if(a==null)
+									a = board.getPlayers()[i];
+								else
+									b = board.getPlayers()[i];
+							}
+						}
+						int addVictoryPoints = 0;
+						Iterator<Card> cardsA = a.getWonder().getCardsPlaced().get(colorToSearch).iterator();
+						while(cardsA.hasNext())
+						{
+							Card cardA = cardsA.next();
+							effect = cardA.getEffect();
+							victoryPoints+=addVictoryPoints;
+						}
+						Iterator<Card> cardsB = b.getWonder().getCardsPlaced().get(colorToSearch).iterator();
+						while(cardsB.hasNext())
+						{
+							Card cardB = cardsB.next();
+							effect = cardB.getEffect();
+							victoryPoints+=addVictoryPoints;
+						}
+					}
+			    else if()
+			    }
+			  }
+			}
+		}
+	}
+	public ArrayList<Card> getPlayerHand() 
+	{
+		return playerHand;
+	}
+	public void setPlayerHand(ArrayList<Card> playerHand) 
+	{
+		this.playerHand = playerHand;
+	}
+	public int getVictoryPoints() 
+	{
+		return victoryPoints;
+	}
+	public void addVictoryPoints(int num) 
+	{
+		victoryPoints+=num;
+	}
+	public int getNumCoins() 
+	{
+		return numCoins;
+	}
+	public void addCoins(int coins) 
+	{
+		numCoins+=coins;
+	}
+	public int getMilitaryPoints() 
+	{
+		return militaryVictories+militaryDefeats;
+	}
+	public void addMilitaryPoints(int num)
+	{
+		militaryPoints+=num;
+	}
+	public int getMilitaryDefeats() 
+	{
+		return militaryDefeats;
+	}
+	public void addMilitaryDefeats(int num) //negative number
+	{
+		militaryDefeats+=num;
+	}
+	public int getMilitaryVictories()
+	{
+		return militaryVictories;
+	}
+	public void addMilitaryVictories(int num) //positive number
+	{
+		militaryVictories+=num;
+	}
+	public Wonder getWonder() 
+	{
+		return wonder;
+	}
+	public void setWonder(Wonder wonder) 
+	{
+		this.wonder = wonder;
+	}
+	public ArrayList<String> getWonderBenefits() 
+	{
+		return wonderBenefits;
+	}
+	public void setWonderBenefits(ArrayList<String> wonderBenefits) 
+	{
+		this.wonderBenefits = wonderBenefits;
+	}
+}
+	
