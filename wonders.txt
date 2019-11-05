@@ -1,3 +1,9 @@
-name  defaultResource resources cardReq wonderBenefits  partsBuilt
+name  defaultResource cardReq wonderBenefits
 
-Gizah/s1/
+Gizah/s1/s2,w3,s4/+3vp,+5vp,+7vp
+Babylon/c1/c2,w3,c4/+3vp,t.1 st.1 gr.1,+7vp
+Rhodos/o1/w2,c3,o4/+3vp,+2mp,+7vp
+Halikarnassos/l1/c2,o3,l2/+3vp,graveyard,+7vp
+Olympia/w1/w2,s2,o2/+3vp,free_build,+7vp
+Alexandria/g1/s2,o2,g2/+3vp,c.1 o.1 w.1 s.1/+7vp
+Ephesos/p1/s2,w2,p2/+3vp,+9coins,+7vp
