@@ -45,4 +45,8 @@ public class Card {
 	public int getAge() {
 		return age;
 	}
+	
+	public int getCost(){
+		return cost;
+	}
 }
