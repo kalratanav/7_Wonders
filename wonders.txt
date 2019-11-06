@@ -3,10 +3,10 @@ if it has a resources followed by a . (Ex: w.1 s.1 o.1) the player gets to choos
 
 name  defaultResource cardReq wonderBenefits
 
-Gizah/+s1/s2,w3,s4/+3vp,+5vp,+7vp
-Babylon/+c1/c2,w3,c4/+3vp,+t.1 +st.1 +gr.1,+7vp
-Rhodos/+o1/w2,c3,o4/+3vp,+2mp,+7vp
-Halikarnassos/+l1/c2,o3,l2/+3vp,graveyard,+7vp
-Olympia/+w1/w2,s2,o2/+3vp,free_build,+7vp
-Alexandria/+g1/s2,o2,g2/+3vp,+c.1 +o.1 +w.1 s.1/+7vp
-Ephesos/+p1/s2,w2,p2/+3vp,+9coins,+7vp
+Gizah/+s 1/s 2,w 3,s 4/+vp 3,+vp 5,+vp 7
+Babylon/+c 1/c 2,w 3,c 4/+vp 3,+t. 1;+st. 1;+gr.1,+vp 7
+Rhodos/+o 1/w 2,c 3,o 4/+vp 3,+mp 2,+vp 7
+Halikarnassos/+l 1/c 2,o 3,l 2/+vp 3,graveyard,+vp 7
+Olympia/+w 1/w 2,s 2,o 2/+vp 3,free_build,+vp 7
+Alexandria/+g 1/s 2,o 2,g 2/+vp 3,+c. 1;+o. 1;+w. 1;s. 1/+vp 7
+Ephesos/+p 1/s 2,w 2,p 2/+vp 3,+coins 9,+vp 7
