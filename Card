@@ -7,14 +7,14 @@ public class Card {
 	private String freeChain;
 	private String color;
 	private int age;
-	public Card(String r, int c, String rc, String e, String n, String fc, String c, int a) {
+	public Card(String r, int c, String rc, String e, String n, String fc, String col, int a) {
 		resourceCost = rc;
 		cost = c;
 		resource = r;
 		effect = e;
 		name = n;
 		freeChain = fc;
-		color = c;
+		color = col;
 		age = a;
 	}
 	
