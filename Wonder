@@ -7,6 +7,7 @@ public class Wonder {
 	private TreeMap<String, Integer> resource;
 	private String [] cardReq;
 	private String [] wonderBenefits;
+	private String []benefitChoices;
 	private int partsBuilt;
 	public Wonder(String wonder) throws IOException
 	{
@@ -27,13 +28,22 @@ public class Wonder {
 		String[]a = ln.split("/");
 		defaultResource = decode(a[1]);
 		cardReq = a[2].split(",");
-		for(int i = 0;)
+		for(int i = 0; i<cardReq.length;i++)
+		{
+			cardReq[i] = decode(cardReq[i]);
+		}
+		wonderBenefits = a[3].split(",");
 		
 		
 	}
-	public static String decode(String a)
+	public String decode(String a)
 	{
 		String b[] = a.split(" ");
+		if(b.length>2)
+		{
+			String choices = decodeChoices(a);
+			
+		}
 		if(b[0].compareTo("s")==0)
 			b[0] = "stone";
 		else if(b[0].compareTo("w")==0)
@@ -52,8 +62,18 @@ public class Wonder {
 			b[0] = "tablet";
 		else if(b[0].compareTo("st")==0)
 			b[0] = "sextant";
+		else if(b[0].compareTo("gr")==0)
+			b[0] = "gear";
+		else if(b[0].compareTo("vp")==0)
+			b[0] = "VictoryPoints";
+		else if(b[0].compareTo("mp")==0)
+			b[0] = "MilitaryPoints";
 		
 			
+	}
+	public String decodeChoices(String b)
+	{
+		
 	}
 	
 
