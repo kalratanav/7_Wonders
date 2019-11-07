@@ -1,0 +1,60 @@
+import java.util.*;
+import java.io.*;
+public class Wonder {
+	private String defaultResource;
+	private TreeMap<String, HashSet<Card>> cardsPlaced;
+	private String name;
+	private TreeMap<String, Integer> resource;
+	private String [] cardReq;
+	private String [] wonderBenefits;
+	private int partsBuilt;
+	public Wonder(String wonder) throws IOException
+	{
+		Scanner input = new Scanner(new File("wonders.txt"));
+		name = wonder;
+		cardsPlaced = new TreeMap<String, HashSet<Card>>();
+		boolean found = false;
+		String ln = "";
+		while(!found && input.hasNext())
+		{
+			String a = input.nextLine();
+			if(a.contains(name)) 
+			{
+				ln += a;
+				found = true;
+			}	
+		}
+		String[]a = ln.split("/");
+		defaultResource = decode(a[1]);
+		cardReq = a[2].split(",");
+		for(int i = 0;)
+		
+		
+	}
+	public static String decode(String a)
+	{
+		String b[] = a.split(" ");
+		if(b[0].compareTo("s")==0)
+			b[0] = "stone";
+		else if(b[0].compareTo("w")==0)
+			b[0] = "wood";
+		else if(b[0].compareTo("c")==0)
+			b[0] = "clay";
+		else if(b[0].compareTo("o")==0)
+			b[0] = "ore";
+		else if(b[0].compareTo("p")==0)
+			b[0] = "papyrus";
+		else if(b[0].compareTo("l")==0)
+			b[0] = "loom";
+		else if(b[0].compareTo("g")==0)
+			b[0] = "glass";
+		else if(b[0].compareTo("t")==0)
+			b[0] = "tablet";
+		else if(b[0].compareTo("st")==0)
+			b[0] = "sextant";
+		
+			
+	}
+	
+
+}
