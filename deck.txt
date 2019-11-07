@@ -145,4 +145,4 @@ c0/o0/s0/w0/g0/l0/p0 0 s2&c2&g1 +1vpforWonderStepbothinclude Builders_Guild null
 c0/o0/s0/w0/g0/l0/p0 0 c3&p1&l1 +1vpforGreenboth Philosophers_Guild null Purple 3
 c0/o0/s0/w0/g0/l0/p0 0 w3&o2&p1 +st.1+tb.1+gr.1 Scientists_Guild null Purple 3
 c0/o0/s0/w0/g0/l0/p0 0 c3&g1 +1vpforRedboth Spies_Guild null Purple 3
-c0/o0/s0/w0/g0/l0/p0 0 o2&s1&l1 +1vpforvlboth Strategists_Guild null Purple 3
+c0/o0/s0/w0/g0/l0/p0 0 o2&s1&l1 +1vpformlboth Strategists_Guild null Purple 3
