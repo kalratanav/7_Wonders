@@ -5,36 +5,29 @@ public class Wonder {
 	private TreeMap<String, HashSet<Card>> cardsPlaced;
 	private String name;
 	private TreeMap<String, Integer> resource;
-	private String [] cardReq;
+	private TreeMap <String, Integer> cardReq;
 	private String [] wonderBenefits;
 	private String []benefitChoices;
 	private int partsBuilt;
 	public Wonder(String wonder) throws IOException
 	{
-		Scanner input = new Scanner(new File("wonders.txt"));
-		name = wonder;
+		Scanner input = new Scanner(new file("wonder.txt"));
+		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
+		name = wonder;
+		String wonderAttributes;
 		boolean found = false;
-		String ln = "";
-		while(!found && input.hasNext())
+		while(!found)
 		{
-			String a = input.nextLine();
-			if(a.contains(name)) 
+			String ln =input.nextLine();
+			if(ln.contains(name))
 			{
-				ln += a;
 				found = true;
-			}	
+				wonderAttributes = ln;
+			}
 		}
-		String[]a = ln.split("/");
-		defaultResource = decode(a[1]);
-		cardReq = a[2].split(",");
-		for(int i = 0; i<cardReq.length;i++)
-		{
-			cardReq[i] = decode(cardReq[i]);
-		}
-		wonderBenefits = a[3].split(",");
-		
-		
+		String []temp = wonderAttributes.split("/");
+		defaultResources = temp[1];
 	}
 	public String decode(String a)
 	{
