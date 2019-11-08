@@ -3,18 +3,23 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeMap;
+
+
+
+
 
 public class Deck 
 {
-	private ArrayList<Card> age1;
-	private ArrayList<Card> age2;
-	private ArrayList<Card> age3;
+	
+	TreeMap<Integer, ArrayList<Card>> decks;
 	
 	public Deck() throws IOException
 	{
-		age1 = new ArrayList<Card>();
-		age2 = new ArrayList<Card>();
-		age3 = new ArrayList<Card>();
+		decks = new TreeMap<Integer, ArrayList<Card>>();
+		decks.put(1, new ArrayList<Card>());
+		decks.put(2, new ArrayList<Card>());
+		decks.put(3, new ArrayList<Card>());
 		Scanner input = new Scanner(new File("deck.txt"));
 		input.nextLine();
 		input.nextLine();
@@ -24,28 +29,28 @@ public class Deck
 			{
 				Card c = new Card(input.next(), Integer.parseInt(input.next()), input.next(), input.next(), input.next(), input.next(), input.next(), Integer.parseInt(input.next()));
 				if(c.getAge()==1)
-					age1.add(c);
+					decks.get(1).add(c);
 				else if(c.getAge()==2)
-					age2.add(c);
+					decks.get(2).add(c);
 				else
-					age3.add(c);
+					decks.get(3).add(c);
 			}
 		}
 	}
 	
 	public ArrayList<Card> getAge1()
 	{
-		return age1;
+		return decks.get(1);
 	}
 	
 	public ArrayList<Card> getAge2()
 	{
-		return age2;
+		return decks.get(2);
 	}
 	
 	public ArrayList<Card> getAge3()
 	{
-		return age3;
+		return decks.get(3);
 	}
 	
 }
