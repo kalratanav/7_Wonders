@@ -1,9 +1,5 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.TreeMap;
-
+import java.util.*;
+import java.io.*;
 public class Wonder {
 	private String defaultResource;
 	private TreeMap<String, HashSet<Card>> cardsPlaced;
@@ -13,64 +9,117 @@ public class Wonder {
 	private String [] wonderBenefits;
 	private String []benefitChoices;
 	private int partsBuilt;
-	public Wonder(String wonder) throws IOException
+	public Wonder(String wonder)
 	{
-		Scanner input = new Scanner(new file("wonder.txt"));
 		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
 		name = wonder;
-		String wonderAttributes;
-		boolean found = false;
-		while(!found)
-		{
-			String ln =input.nextLine();
-			if(ln.contains(name))
-			{
-				found = true;
-				wonderAttributes = ln;
-			}
-		}
-		String []temp = wonderAttributes.split("/");
-		defaultResources = temp[1];
+		String []temp = wonder.split("/");
+		defaultResource += decodeAndAddResource(temp[1]);
 	}
-	public String decode(String a)
+	public 
+	public String decodeAndAddResource(String a)
 	{
 		String b[] = a.split(" ");
 		if(b.length>2)
 		{
 			String choices = decodeChoices(a);
+			return choices;
 			
 		}
-		if(b[0].compareTo("s")==0)
+		if(b[0].compareTo("s")==0) {
 			b[0] = "stone";
-		else if(b[0].compareTo("w")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("w")==0) {
 			b[0] = "wood";
-		else if(b[0].compareTo("c")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("c")==0) {
 			b[0] = "clay";
-		else if(b[0].compareTo("o")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("o")==0) {
 			b[0] = "ore";
-		else if(b[0].compareTo("p")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("p")==0) {
 			b[0] = "papyrus";
-		else if(b[0].compareTo("l")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("l")==0) {
 			b[0] = "loom";
-		else if(b[0].compareTo("g")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("g")==0) {
 			b[0] = "glass";
-		else if(b[0].compareTo("t")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("t")==0) {
 			b[0] = "tablet";
-		else if(b[0].compareTo("st")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("st")==0) {
 			b[0] = "sextant";
-		else if(b[0].compareTo("gr")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("gr")==0) {
 			b[0] = "gear";
-		else if(b[0].compareTo("vp")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("vp")==0) {
 			b[0] = "VictoryPoints";
-		else if(b[0].compareTo("mp")==0)
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		else if(b[0].compareTo("mp")==0) {
 			b[0] = "MilitaryPoints";
-		
+			if(Integer.parseInt(b[1])!=0)
+				resource.put(b[0], (resource.get(b[0])+Integer.parseInt(b[1])));
+			else
+				resource.put(b[0], Integer.parseInt(b[1]));
+		}
+		return b[0]+" "+b[1];
 			
 	}
 	public String decodeChoices(String b)
 	{
-		
+		if(b.contains("."))
+		{
+			return decodeWithChoices(String b);
+		}
 	}
 	
 
