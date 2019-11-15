@@ -1,5 +1,8 @@
 resources cost resourcecost effect name freeChain Color age
 
+s = stone; w = wood; c = clay; o = ore; p = papyrus; l = loom; g = glass; t = tablet; st = sextant; gr = gear; vp = VictoryPoints; mp = MilitaryPoints; coins = coins; 
+if it has a resources followed by a . (Ex: w.1 s.1 o.1) the player gets to choose one of the resources
+
 c0/o0/s0/w1/g0/l0/p0 0 null null Lumber_Yard null Brown 1
 c0/o0/s0/w1/g0/l0/p0 0 null null Lumber_Yard null Brown 1
 c0/o1/s0/w0/g0/l0/p0 0 null null Ore_Vein null Brown 1
