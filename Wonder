@@ -13,13 +13,15 @@ public class Wonder {
 	{
 		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
-		name = wonder;
 		String []temp = wonder.split("/");
+		name = temp[0];
 		defaultResource += decodeAndAddResource(temp[1]);
 	}
 	public String playedCard(Card a)
 	{
-		cardsPlaced.put(a.getColor(), (cardsPlaced.get(a.getColor())).add(a));
+		HashSet<Card> oof = cardsPlaced.get(a.getColor());
+		oof.add(a);
+		cardsPlaced.put(a.getColor(), oof);
 		decodeAndAddResource(a.getResource());
 	}
 	public String decodeAndAddResource(String a)
@@ -27,7 +29,7 @@ public class Wonder {
 		String b[] = a.split(" ");
 		if(a.contains("."))
 		{
-			return decodeWithChoices(a);
+			return decodeBenefits(a);
 		}
 		for(int i = 0 ; i<b.length; i+=2)
 		{
@@ -123,11 +125,73 @@ public class Wonder {
 		}
 			return returner;
 	}
-	public String decodeWithChoices(String b)
+	public String[] decodeBenefits(String b)
 	{
 		String a[] = b.split(" ");
+		for(int i = 0 ; i<a.length; i++)
+		{
+			if(a[i].contains("."))
+			{
+				String [] resourceChoices = a[i].split(".");
+				for(int k = 0; k<resourceChoices.length; k+=2)
+				{
+					resourceChoices[k] = decode(resourceChoices[k]);
+				}
+				a[i]=resourceChoices.toString();
+			}
+		}
 		
 	}
+	public String decode(String b)
+	{
+		String a="";
+		if(b.compareTo("s")==0) {
+			a += "stone";
+		}
+		else if(b.compareTo("w")==0) {
+			a += "wood";
+		}
+		else if(b.compareTo("c")==0) {
+			a += "clay";
+		}
+		else if(b.compareTo("o")==0) {
+			a += "ore";
+		}
+		else if(b.compareTo("p")==0) {
+			a += "papyrus";
+		}
+		else if(b.compareTo("l")==0) {
+			a += "loom";
+		}
+		else if(b.compareTo("g")==0) {
+			a += "glass";
+		}
+		else if(b.compareTo("t")==0) {
+			a += "tablet";
+		}
+		else if(b.compareTo("st")==0) {
+			a += "sextant";
+		}
+		else if(b.compareTo("gr")==0) {
+			a += "gear";
+		}
+		else if(b.compareTo("vp")==0) {
+			a += "VictoryPoints";
+		}
+		else if(b.compareTo("mp")==0) {
+			a += "MilitaryPoints";
+		}
+		return a;
+	}
+	public String toString(String[]a)
+	{
+		String b = "";
+		for(int i =0; i<a.length; i++)
+			b+=a[i];
+		return b;
+	}
+}
+
 	
 
-}
+
