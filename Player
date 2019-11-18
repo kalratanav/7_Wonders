@@ -12,6 +12,8 @@ public class Player
 	private int militaryVictories;
 	private Wonder wonder;
 	private ArrayList<String> wonderBenefits;
+	private TreeMap<String, Boolean> tradeLeft;
+	private TreeMap<String, Boolean> tradeRight;
 	public Player(Wonder won, ArrayList<Card> initialHand)
 	{
 		numCoins = 3;
@@ -21,6 +23,8 @@ public class Player
 		militaryVictories = 0;
 		wonder = won;
 		playerHand = initialHand;
+		tradeLeft = new TreeMap<String, Integer>();
+		tradeRight = new TreeMap<String, Integer>();
 	}
 	public void removeCard(Card card)
 	{
@@ -157,7 +161,7 @@ public class Player
 		}
 		return victoryPoints;	
 	}
-	public ArrayList<Card> getPlayerHand() 
+	public ArrayList<Card> getPlayerHand() `
 	{
 		return playerHand;
 	}
@@ -208,6 +212,14 @@ public class Player
 	public Wonder getWonder() 
 	{
 		return wonder;
+	}
+	public TreeMap<String, Integer> getTradeLeft()
+	{
+	     return tradeLeft;
+	}
+	public TreeMap<String, Integer> getTradeRight()
+	{
+	    return tradeRight;
 	}
 	public void setWonder(Wonder wonder) 
 	{
