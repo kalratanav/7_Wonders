@@ -1,14 +1,15 @@
-import java.util.*;
-import java.io.*;
+import java.util.HashSet;
+import java.util.TreeMap;
 public class Wonder {
 	private String defaultResource;
 	private TreeMap<String, HashSet<Card>> cardsPlaced;
 	private String name;
 	private TreeMap<String, Integer> resource;
-	private TreeMap <String, Integer> cardReq;
+	//private TreeMap <String, Integer> cardReq;
+	private String[] cardReq;
 	private String [] wonderBenefits;
 	private String []benefitChoices;
-	private int partsBuilt;
+	private int partsBuilding;
 	public Wonder(String wonder)
 	{
 		defaultResource = "";
@@ -16,8 +17,24 @@ public class Wonder {
 		String []temp = wonder.split("/");
 		name = temp[0];
 		defaultResource += decodeAndAddResource(temp[1]);
+		wonderBenefits = decode2(temp[3]);
+		partsBuilding = 0;
+		cardReq =decode2(temp[2]);
+	} 
+	public void buildWonder() {
+		boolean build = true;
+		TreeMap<String, Integer> temp;
+		for(int i =0; i<cardReq.length; i++)
+		{
+			if(i%2!=0) {
+				temp.put(cardReq[i-1], Integer.parseInt(cardReq[i]));
+				if(!(resource.get(cardReq[i-1])>= temp.get(cardReq[i-1]))
+						build = false;
+			}
+		}
+		if(build)
 	}
-	public String playedCard(Card a)
+	public void playedCard(Card a)
 	{
 		HashSet<Card> oof = cardsPlaced.get(a.getColor());
 		oof.add(a);
@@ -27,10 +44,6 @@ public class Wonder {
 	public String decodeAndAddResource(String a)
 	{
 		String b[] = a.split(" ");
-		if(a.contains("."))
-		{
-			return decodeBenefits(a);
-		}
 		for(int i = 0 ; i<b.length; i+=2)
 		{
 			if(b[i].compareTo("s")==0) {
@@ -140,7 +153,7 @@ public class Wonder {
 				a[i]=resourceChoices.toString();
 			}
 		}
-		
+		return a;
 	}
 	public String decode(String b)
 	{
@@ -183,11 +196,61 @@ public class Wonder {
 		}
 		return a;
 	}
+	public String[] decode2(String b)
+	{
+		if(b.contains("."))
+		{
+			return decodeBenefits(b);
+		}
+		int c = b.split(" ").length;
+		String a[] = new String[c];
+		for(int i = 0 ; i<c; i+=2) 
+		{
+			if(b.compareTo("s")==0) {
+				a[i] = "stone";
+			}
+			else if(b.compareTo("w")==0) {
+				a[i] = "wood";
+			}
+			else if(b.compareTo("c")==0) {
+				a[i] = "clay";
+			}
+			else if(b.compareTo("o")==0) {
+				a[i] = "ore";
+			}
+			else if(b.compareTo("p")==0) {
+				a[i] = "papyrus";
+			}
+			else if(b.compareTo("l")==0) {
+				a[i] = "loom";
+			}
+			else if(b.compareTo("g")==0) {
+				a[i] = "glass";
+			}
+			else if(b.compareTo("t")==0) {
+				a[i] = "tablet";
+			}
+			else if(b.compareTo("st")==0) {
+				a[i] = "sextant";
+			}
+			else if(b.compareTo("gr")==0) {
+				a[i] = "gear";
+			}
+			else if(b.compareTo("vp")==0) {
+				a[i] = "VictoryPoints";
+			}
+			else if(b.compareTo("mp")==0) {
+				a[i] = "MilitaryPoints";
+			}
+		}
+		return a;
+	}
+
 	public String toString(String[]a)
 	{
 		String b = "";
 		for(int i =0; i<a.length; i++)
-			b+=a[i];
+			b+=a[i]+" ";
 		return b;
 	}
 }
