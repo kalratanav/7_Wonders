@@ -235,6 +235,14 @@ public class Player
 	{
 	    return tradeRight;
 	}
+	public void addTradeLeft(String key, boolean bool)
+	{
+	  getTradeLeft().put(key, bool);
+	}
+	public void addTradeRight(String key, boolean bool)
+	{
+	  getTradeRight().put(key, bool);
+	}
 	public void setWonder(Wonder wonder) 
 	{
 		this.wonder = wonder;
