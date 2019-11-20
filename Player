@@ -24,7 +24,21 @@ public class Player
 		wonder = won;
 		playerHand = initialHand;
 		tradeLeft = new TreeMap<String, Integer>();
+		tradeLeft.put("clay", false);
+		tradeLeft.put("stone", false);
+		tradeLeft.put("wood", false);
+		tradeLeft.put("ore", false);
+		tradeLeft.put("papyrus", false);
+		tradeLeft.put("loom", false);
+		tradeLeft.put("glass", false);
 		tradeRight = new TreeMap<String, Integer>();
+		tradeRight.put("clay", false);
+		tradeRight.put("stone", false);
+		tradeRight.put("wood", false);
+		tradeRight.put("ore", false);
+		tradeRight.put("papyrus", false);
+		tradeRight.put("loom", false);
+		tradeRight.put("glass", false);
 	}
 	public void removeCard(Card card)
 	{
