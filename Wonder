@@ -5,12 +5,14 @@ public class Wonder {
 	private TreeMap<String, HashSet<Card>> cardsPlaced;
 	private String name;
 	private TreeMap<String, Integer> resource;
-	//private TreeMap <String, Integer> cardReq;
 	private String[] cardReq;
 	private String [] wonderBenefits;
 	private String []benefitChoices;
 	private int partsBuilding;
-	public Wonder(String wonder)
+	private boolean canAccessChoices;
+	private String key;
+	private int amount;
+	public Wonder(String wonder, int choice)
 	{
 		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
@@ -20,19 +22,54 @@ public class Wonder {
 		wonderBenefits = decode2(temp[3]);
 		partsBuilding = 0;
 		cardReq =decode2(temp[2]);
+		canAccessChoices = false;
 	} 
+	public void benefitChoice(int choice)
+	{
+		if(!canAccessChoices)
+			return;
+		if(key==null)
+		{
+			if(resource.containsKey(benefitChoices[choice]))
+				resource.put(benefitChoices[choice], resource.get(benefitChoices[choice])+(Integer.parseInt(benefitChoices[choice+1])));
+			else
+				resource.put(benefitChoices[choice], Integer.parseInt(benefitChoices[choice+1]));
+			key = benefitChoices[choice];
+			amount = Integer.parseInt(benefitChoices[choice+1]);
+		}
+		else
+			resource.put(key, amount);
+			
+	}
 	public void buildWonder() {
 		boolean build = true;
-		TreeMap<String, Integer> temp;
+		TreeMap<String, Integer> temp= new TreeMap<String, Integer>();
 		for(int i =0; i<cardReq.length; i++)
 		{
 			if(i%2!=0) {
 				temp.put(cardReq[i-1], Integer.parseInt(cardReq[i]));
-				if(!(resource.get(cardReq[i-1])>= temp.get(cardReq[i-1]))
+				if(!(resource.get(cardReq[i-1])>= temp.get(cardReq[i-1])))
 						build = false;
 			}
 		}
 		if(build)
+		{
+			partsBuilding++;
+			if(benefitChoices[partsBuilding-1].contains("."))
+			{
+				canAccessChoices= true;
+			}
+			else {
+				String a[] = wonderBenefits[partsBuilding-1].split(" ");
+				for(int i = 0; i<a.length;i+=2)
+				{
+					if(resource.containsKey(a[i]))
+						resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
+					else
+						resource.put(a[i], Integer.parseInt(a[i+1]));
+				}
+			}
+		}
 	}
 	public void playedCard(Card a)
 	{
