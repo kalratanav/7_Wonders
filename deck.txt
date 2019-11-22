@@ -29,9 +29,9 @@ c0/o0/s0/w0/g0/l0/p0 0 null -1leftc&s&w&o West_Trading_Post null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null -1leftc&s&w&o West_Trading_Post null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null -1bothg&l&p Marketplace null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null -1bothg&l&p Marketplace null Yellow 1
-c0/o0/s0/w0/g0/l0/p0 0 null +5coins Tavern null Yellow 1
-c0/o0/s0/w0/g0/l0/p0 0 null +5coins Tavern null Yellow 1
-c0/o0/s0/w0/g0/l0/p0 0 null +5coins Tavern null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 0 null +5coin Tavern null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 0 null +5coin Tavern null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 0 null +5coin Tavern null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null +2vp Altar null Blue 1
 c0/o0/s0/w0/g0/l0/p0 0 null +2vp Altar null Blue 1
 c0/o0/s0/w0/g0/l0/p0 0 null +2vp Theatre null Blue 1
