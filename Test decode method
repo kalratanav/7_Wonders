@@ -1,0 +1,65 @@
+ public void decode(Card c)
+	  {
+		 if(c.getEffect().contains("-1"))
+	     {
+	    	if(c.getEffect().contains("right"))
+	    	{
+	      	String[] arr = c.getEffect().substring(c.getEffect().indexOf("right")+5).split("&");
+	           
+	      	for(String x : arr)
+	         {
+	           if(x.equals("c"))
+	           	getCurrentPlayer().getTradeRight().put("clay", true);
+	           else if(x.equals("o"))
+	           	getCurrentPlayer().getTradeRight().put("ore", true);
+	           else if(x.equals("s"))
+	           	getCurrentPlayer().getTradeRight().put("stone", true);
+	           else if(x.equals("w"))
+	            getCurrentPlayer().getTradeRight().put("wood", true);
+	          }
+	    	}
+	      	else if(c.getEffect().contains("left"))
+	      	{
+	          String[] arr = c.getEffect().substring(c.getEffect().indexOf("left")+4).split("&");
+	            
+	           for(String x : arr)
+	        	{
+	           if(x.equals("c"))
+	             getCurrentPlayer().getTradeLeft().put("clay", true);
+	           else if(x.equals("o"))
+	             getCurrentPlayer().getTradeLeft().put("ore", true);
+	           else if(x.equals("s"))
+	             getCurrentPlayer().getTradeLeft().put("stone", true);
+	           else if(x.equals("w"))
+	             getCurrentPlayer().getTradeLeft().put("wood", true);
+	            }
+	          }
+	          else
+	          {
+	          	String[] arr = c.getEffect().substring(c.getEffect().indexOf("both")+4).split("&");
+	            
+	            for(String x : arr)
+	            {
+	            	if(x.equals("g"))
+	              {
+	                getCurrentPlayer().getTradeLeft().put("glasswork", true);
+	                getCurrentPlayer().getTradeRight().put("glasswork", true);
+	              }
+	              else if(x.equals("l"))
+	              {
+	                getCurrentPlayer().getTradeLeft().put("loom", true);
+	                getCurrentPlayer().getTradeRight().put("loom", true);
+	              }
+	              else if(x.equals("p"))
+	              {
+	                getCurrentPlayer().getTradeLeft().put("papyrus", true);
+	                getCurrentPlayer().getTradeRight().put("papyrus", true);
+	              }
+	            }
+	          }
+	      }
+		 else
+		 {
+			 
+		 }
+	  }	
