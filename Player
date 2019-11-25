@@ -195,6 +195,10 @@ public class Player
 	{
 		return numCoins;
 	}
+	public void reduceCoins(int num)
+	{
+	   coins-=num;
+	}
 	public void addCoins(int coins) 
 	{
 		numCoins+=coins;
