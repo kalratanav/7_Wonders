@@ -12,7 +12,7 @@ public class Wonder {
 	private boolean canAccessChoices;
 	private String key;
 	private int amount;
-	public Wonder(String wonder, int choice)
+	public Wonder(String wonder)
 	{
 		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
@@ -293,5 +293,3 @@ public class Wonder {
 }
 
 	
-
-
