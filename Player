@@ -82,9 +82,9 @@ public class Player
 			    	{
 			    		scienceScoring.put("st", scienceScoring.get("st")+1);
 			    	}
-					int gearSquared = Math.pow(scienceScoring.get("gr"), 2);
-					int boardSquared = Math.pow(scienceScoring.get("t"), 2);
-					int protractorSquared = Math.pow(scienceScoring.get("st"), 2);
+					int gearSquared = (int)Math.pow(scienceScoring.get("gr"), 2);
+					int boardSquared = (int)Math.pow(scienceScoring.get("t"), 2);
+					int protractorSquared = (int)Math.pow(scienceScoring.get("st"), 2);
 					victoryPoints+=gearSquared + boardSquared + protractorSquared;
 					if(scienceScoring.get("gr")>0&&scienceScoring.get("t")>0&&scienceScoring.get("st")>0)
 					{
@@ -99,11 +99,11 @@ public class Player
 			  {
 			    Card card = cards.next();
 				String effect = card.getEffect();
-			    if(card.getName().contains("Spies guild")||card.getName().contains("Magistrates guild")
+			    if(card.getName().contains("Spies guild")|| card.getName().contains("Magistrates guild") ||
 			    		card.getName().contains("Workers guild")||card.getName().contains("Craftsman Guild")
-			    		||card.getName().contains("Traders guild")||card.getName().contains("Philosophers guild")))
+			    		||card.getName().contains("Traders guild")||card.getName().contains("Philosophers guild"))
 			    {
-			       int numVictory = Integer.parseInt(card.getEffect().charAt(0));
+			       int numVictory = Integer.parseInt(card.getEffect().substring(0,1));
 			     
 			       int colorFlag = 0;
 			       String colorToSearch = "";		
