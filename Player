@@ -23,7 +23,7 @@ public class Player
 		militaryVictories = 0;
 		wonder = won;
 		playerHand = initialHand;
-		tradeLeft = new TreeMap<String, Integer>();
+		tradeLeft = new TreeMap<String, Boolean>();
 		tradeLeft.put("clay", false);
 		tradeLeft.put("stone", false);
 		tradeLeft.put("wood", false);
@@ -31,7 +31,7 @@ public class Player
 		tradeLeft.put("papyrus", false);
 		tradeLeft.put("loom", false);
 		tradeLeft.put("glass", false);
-		tradeRight = new TreeMap<String, Integer>();
+		tradeRight = new TreeMap<String, Boolean>();
 		tradeRight.put("clay", false);
 		tradeRight.put("stone", false);
 		tradeRight.put("wood", false);
@@ -175,7 +175,7 @@ public class Player
 		}
 		return victoryPoints;	
 	}
-	public ArrayList<Card> getPlayerHand() `
+	public ArrayList<Card> getPlayerHand()
 	{
 		return playerHand;
 	}
@@ -197,7 +197,7 @@ public class Player
 	}
 	public void reduceCoins(int num)
 	{
-	   coins-=num;
+	   numCoins-=num;
 	}
 	public void addCoins(int coins) 
 	{
@@ -231,11 +231,11 @@ public class Player
 	{
 		return wonder;
 	}
-	public TreeMap<String, Integer> getTradeLeft()
+	public TreeMap<String, Boolean> getTradeLeft()
 	{
 	     return tradeLeft;
 	}
-	public TreeMap<String, Integer> getTradeRight()
+	public TreeMap<String, Boolean> getTradeRight()
 	{
 	    return tradeRight;
 	}
@@ -260,4 +260,3 @@ public class Player
 		this.wonderBenefits = wonderBenefits;
 	}
 }
-	
