@@ -128,4 +128,8 @@ public class Player
 	{
 		this.wonderBenefits = wonderBenefits;
 	}
+	public void setHand(ArrayList<Card> h)
+	{
+		playerHand = h;
+	}
 }
