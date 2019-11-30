@@ -282,7 +282,15 @@ public class Wonder {
 		}
 		return a;
 	}
-
+	
+	public TreeMap<String, HashSet<Card>> getCardsPlaced()
+	{
+	    return cardsPlaced;
+	}
+	public int getPartsBuilt()
+	{
+	    return partsBuilding;
+	}
 	public String toString(String[]a)
 	{
 		String b = "";
