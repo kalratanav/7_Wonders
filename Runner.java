@@ -24,6 +24,10 @@ public class Runner {
 		{
 			int choice = g.getChoice();//gets the card choice from graphics
 			board.play(choice);
+			Player player = board.getPrevPlayer();
+			g.setCoins(player.getNumCoins());//send amount of coins
+			g.point(player.getMilitaryVictories(), player.getMilitaryDefeats(), player.getMilitaryPoints(), player.getVictoryPoints()); // send military stuff
+			g.
 			setChoices();
 		}
 		g.setWinner(board.getWinner()); //send the graphics class the player number for displaying it 
