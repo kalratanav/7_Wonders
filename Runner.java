@@ -16,7 +16,7 @@ public class Runner {
 	public static void setChoices()
 	{
 		choices = (board.getCurrentPlayer()).getPlayerHand();
-		g.hand();//have this line send the graphics class the hand of cards (choices) in order for the hand to be printed out.
+		g.hand(choices);//have this line send the graphics class the hand of cards (choices) in order for the hand to be printed out.
 	}
 	public static void play()
 	{
