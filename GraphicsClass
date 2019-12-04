@@ -1,0 +1,68 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+public class GraphicsClass extends JPanel implements MouseListener{
+	private JFrame frame;
+	private int x,y;
+	private Player currentPlayer, previousPlayer, nextPlayer;
+	public GraphicsClass() 
+	{
+		frame  = new JFrame("7 Wonders");
+		frame.setSize(1920, 1080);
+		frame.setVisible(true);
+		frame.add(this);
+		addMouseListener(this);
+		setLayout(null);
+	}
+	public void paintComponent(Graphics g)
+	{
+		//draw rectangle
+		g.drawRect(420, 730, 1080, 350);
+		
+		//current players wonders
+		BufferedImage wonder1 = ImageIO.read(new File(currentPlayer.getWonder().getName))
+	}
+	public void mouseClicked(MouseEvent e) {
+		x = e.getX();
+		y = e.getY();
+		System.out.println(x + " " + y);
+		//Runner.play();
+		
+		//repaint();	
+	}
+	
+	public void setCurrentPlayer(Player p) {
+		currentPlayer = p;
+	}
+	
+	public void setNextPlayer(Player p) {
+		nextPlayer = p;
+	}
+
+	public void setPreviousPlayer(Player p) {
+		previousPlayer = p;
+	}
+	
+	public void mouseEntered(MouseEvent e) {
+		
+	}
+	public void mouseExited(MouseEvent e) {
+		
+	}
+	public void mousePressed(MouseEvent e) {
+		
+	}
+	public void mouseReleased(MouseEvent e) {
+		
+	}
+	
+}
