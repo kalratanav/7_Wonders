@@ -28,11 +28,11 @@ public class Runner {
 			/*g.setCoins(player.getNumCoins());//send amount of coins
 			g.point(player.getMilitaryVictories(),player.getMilitaryDefeats(), player.getMilitaryDefeats(), player.getMilitaryPoints(), player.getVictoryPoints()); // send military stuff
 			g.*/
-			g.CurrentPlayer(player); //send player object
+			g.setCurrentPlayer(player); //send player object
 			Player nextPlayer = board.getCurrentPlayer();
-			g.NextPlayer(nextPlayer);
+			g.setNextPlayer(nextPlayer);
 			Player PrevPlayer = board.getNextPlayer();
-			g.PrePlayer(PrevPlayer);
+			g.setPrePlayer(PrevPlayer);
 			setChoices();
 		}
 		g.setWinner(board.declareWinner()); //send the graphics class the player number for displaying it 
