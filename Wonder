@@ -301,6 +301,9 @@ public class Wonder {
 			b+=a[i]+" ";
 		return b;
 	}
+	public STring getName() {
+		return name;
+	}
 }
 
 	
