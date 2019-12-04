@@ -24,13 +24,18 @@ public class Runner {
 		{
 			int choice = g.getChoice();//gets the card choice from graphics
 			board.play(choice);
-			Player player = board.getPrevPlayer();
-			g.setCoins(player.getNumCoins());//send amount of coins
-			g.point(player.getMilitaryVictories(), player.getMilitaryDefeats(), player.getMilitaryPoints(), player.getVictoryPoints()); // send military stuff
-			g.
+			Player player = board.getPreviousPlayer();
+			/*g.setCoins(player.getNumCoins());//send amount of coins
+			g.point(player.getMilitaryVictories(),player.getMilitaryDefeats(), player.getMilitaryDefeats(), player.getMilitaryPoints(), player.getVictoryPoints()); // send military stuff
+			g.*/
+			g.CurrentPlayer(player); //send player object
+			Player nextPlayer = board.getCurrentPlayer();
+			g.NextPlayer(nextPlayer);
+			Player PrevPlayer = board.getNextPlayer();
+			g.PrePlayer(PrevPlayer);
 			setChoices();
 		}
-		g.setWinner(board.getWinner()); //send the graphics class the player number for displaying it 
+		g.setWinner(board.declareWinner()); //send the graphics class the player number for displaying it 
 	}
 
 }
