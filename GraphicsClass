@@ -1,3 +1,4 @@
+  
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -26,10 +27,44 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{
 		//draw rectangle
-		g.drawRect(420, 730, 1080, 350);
+		g.drawRect(420, 755, 1080, 350);
+		g.drawRect(0,0,960,150);
+		g.drawRect(960,0,960,150);
+		
+		//age card back
+		try {
+			BufferedImage backOfCard = ImageIO.read(new File("Age1_Card.png")); // make if statement to display the correct age card
+			g.drawImage(backOfCard, 20, 725, frame);
+		} catch (IOException e1) {}
 		
 		//current players wonders
-		BufferedImage wonder1 = ImageIO.read(new File(currentPlayer.getWonder().getName))
+		try {
+			BufferedImage wonder1 = ImageIO.read(new File("Gizah"+"_wonder1.PNG"));
+			BufferedImage wonder2 = ImageIO.read(new File("Gizah"+"_wonder2.PNG"));
+			BufferedImage wonder3 = ImageIO.read(new File("Gizah"+"_wonder3.PNG"));
+			g.drawImage(wonder1, 525, 695, frame);
+			g.drawImage(wonder2, 840, 695, frame);
+			g.drawImage(wonder3, 1155, 695, frame);
+		} catch (IOException e) {}
+		
+		//Display coins
+		try {
+			BufferedImage coin = ImageIO.read(new File("Coin.PNG"));
+			g.drawImage(coin, 600, 636, frame);
+		} catch (IOException e) {}
+		
+		//Victory point Display
+		try {
+			BufferedImage victoryPoint = ImageIO.read(new File("Victory_Point.png"));
+			g.drawImage(victoryPoint, 915, 622, frame);
+		} catch (IOException e) {}
+		
+		//Military point Display
+				try {
+					BufferedImage militaryP = ImageIO.read(new File("Military_Point.png"));
+					g.drawImage(militaryP, 1230, 625, frame);
+				} catch (IOException e) {}
+		
 	}
 	public void mouseClicked(MouseEvent e) {
 		x = e.getX();
