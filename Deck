@@ -19,10 +19,14 @@ public class Deck
 		Scanner input = new Scanner(new File("deck.txt"));
 		input.nextLine();
 		input.nextLine();
+		input.nextLine();
+		input.nextLine();
+		input.nextLine();
 		while(input.hasNextLine())
 		{
 			while(input.hasNext())
 			{
+				
 				Card c = new Card(input.next(), Integer.parseInt(input.next()), input.next(), input.next(), input.next(), input.next(), input.next(), Integer.parseInt(input.next()));
 				if(c.getAge()==1)
 					decks.get(1).add(c);
