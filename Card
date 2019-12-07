@@ -49,4 +49,9 @@ public class Card {
 	public int getCost(){
 		return cost;
 	}
+	public String toString()
+	{
+		return getName() + " " + getEffect() + " " +  getCost() + " " +  
+	getResourceCost() + " " + getFreeChain() + getColor() + " " + getCost() + getAge();
+	}
 }
