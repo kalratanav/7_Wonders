@@ -104,11 +104,21 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		
 		//loading next Player window
 		if(x >= 225 && x <= 650 && y >= 55 && y <= 123) {
+			/*
 			JFrame nextFrame  = new JFrame("(Insert Next Player)");
 			nextFrame.setSize(1080, 720);
 			nextFrame.setVisible(true);
+			nextFrame.add(this.loadNextPlayer(g));
+			setLayout(null);
+			
 			g.drawString("HELLO", 100, 100);
+			*/
+			new NextPlayerWindow();
 		}
+		
+	}
+	
+	public void loadNextPlayer(Graphics g) {
 		
 	}
 	public void mouseClicked(MouseEvent e) {
@@ -146,3 +156,5 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	}
 	
 }
+
+
