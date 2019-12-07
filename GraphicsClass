@@ -14,7 +14,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	private JFrame frame;
 	private int x,y;
 	private Player currentPlayer, previousPlayer, nextPlayer;
-	public GraphicsClass() 
+	public GraphicsClass(/*Player current, Player next, Player previouse*/) 
 	{
 		frame  = new JFrame("7 Wonders");
 		frame.setSize(1920, 1080);
@@ -27,8 +27,8 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	{
 		//draw rectangle
 		g.drawRect(420, 755, 1080, 350);
-		g.drawRect(0,0,960,150);
-		g.drawRect(960,0,960,150);
+		g.drawRect(0,0,960,125);
+		g.drawRect(960,0,960,125);
 		
 		//age card back
 		try {
@@ -41,9 +41,11 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			BufferedImage wonder1 = ImageIO.read(new File("Gizah"+"_wonder1.PNG"));
 			BufferedImage wonder2 = ImageIO.read(new File("Gizah"+"_wonder2.PNG"));
 			BufferedImage wonder3 = ImageIO.read(new File("Gizah"+"_wonder3.PNG"));
+			BufferedImage resource = ImageIO.read(new File("Gizah" + "_resource.png"));
 			g.drawImage(wonder1, 525, 695, frame);
 			g.drawImage(wonder2, 840, 695, frame);
 			g.drawImage(wonder3, 1155, 695, frame);
+			g.drawImage(resource, 450, 718, frame);
 		} catch (IOException e) {}
 		
 		//Display coins
@@ -72,11 +74,41 @@ public class GraphicsClass extends JPanel implements MouseListener{
 				
 		//Display Victory tokens
 		try {
-			BufferedImage victoryT = ImageIO.read(new File("Defeat_Token.png"));
+			BufferedImage victoryT = ImageIO.read(new File("Victory_Token.png"));
 			g.drawImage(victoryT, 1075, 653,frame);
 		} catch (IOException e) {}
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-		g.drawString("x1", 1123, 690); //gets number of victory points
+		g.drawString("x1", 1115, 690); //gets number of victory points
+		
+		//Display Defeat tokens
+				try {
+					BufferedImage defeatT = ImageIO.read(new File("Defeat_Token.png"));
+					g.drawImage(defeatT, 750, 653,frame);
+				} catch (IOException e) {}
+				g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+				g.drawString("x1", 800, 690); //gets number of victory points
+				
+		//next player stuff
+		//name
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+		g.drawString("Player N", 350,40);
+		
+		g.setColor(Color.GREEN);
+		g.fillRect(225, 55, 425, 70);
+		
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+		g.setColor(Color.BLACK);
+		g.drawString("Click Here to View Player N", 285, 90);
+		
+		
+		
+		//loading next Player window
+		if(x >= 225 && x <= 650 && y >= 55 && y <= 123) {
+			JFrame nextFrame  = new JFrame("(Insert Next Player)");
+			nextFrame.setSize(1080, 720);
+			nextFrame.setVisible(true);
+			g.drawString("HELLO", 100, 100);
+		}
 		
 	}
 	public void mouseClicked(MouseEvent e) {
@@ -85,7 +117,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		System.out.println(x + " " + y);
 		//Runner.play();
 		
-		//repaint();	
+		repaint();	
 	}
 	
 	public void setCurrentPlayer(Player p) {
