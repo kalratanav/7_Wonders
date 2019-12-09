@@ -357,6 +357,10 @@ public class Wonder {
 	{
 	    return partsBuilding;
 	}
+	
+	public String getName() {
+		return name;
+	}
 	public String toString(String[]a)
 	{
 		String b = "";
@@ -365,5 +369,3 @@ public class Wonder {
 		return b;
 	}
 }
-
-	
