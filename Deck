@@ -26,7 +26,6 @@ public class Deck
 		{
 			while(input.hasNext())
 			{
-				
 				Card c = new Card(input.next(), Integer.parseInt(input.next()), input.next(), input.next(), input.next(), input.next(), input.next(), Integer.parseInt(input.next()));
 				if(c.getAge()==1)
 					decks.get(1).add(c);
