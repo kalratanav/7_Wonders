@@ -35,6 +35,7 @@ public class Deck
 					decks.get(3).add(c);
 			}
 		}
+		System.out.println(decks.get(1));
 	}
 	
 	public ArrayList<Card> getAge1()
