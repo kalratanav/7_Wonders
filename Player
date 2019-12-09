@@ -10,12 +10,14 @@ public class Player
 	private int militaryPoints;
 	private int militaryDefeats;
 	private int militaryVictories;
+	private int playerNum;
 	private Wonder wonder;
 	private ArrayList<String> wonderBenefits;
 	private TreeMap<String, Boolean> tradeLeft;
 	private TreeMap<String, Boolean> tradeRight;
-	public Player(Wonder won, ArrayList<Card> initialHand)
+	public Player(Wonder won, ArrayList<Card> initialHand, int num)
 	{
+		playerNum = num;
 		numCoins = 3;
 		victoryPoints = 0;
 		militaryPoints = 0;
@@ -39,6 +41,9 @@ public class Player
 		tradeRight.put("papyrus", false);
 		tradeRight.put("loom", false);
 		tradeRight.put("glass", false);
+	}
+	public int getPlayerNum() {
+		return playerNum;
 	}
 	public void removeCard(Card card)
 	{
