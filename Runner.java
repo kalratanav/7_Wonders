@@ -16,14 +16,14 @@ public class Runner {
 	public static void setChoices()
 	{
 		choices = (board.getCurrentPlayer()).getPlayerHand();
-		g.hand(choices);//have this line send the graphics class the hand of cards (choices) in order for the hand to be printed out.
+	//	g.hand(choices);//have this line send the graphics class the hand of cards (choices) in order for the hand to be printed out.
 	}
 	public static void play()
 	{
 		while(board.gameRunning())
 		{
-			int choice = g.getChoice();//gets the card choice from graphics
-			board.play(choice);
+			int choice = g.playerChoice();//gets the card choice from graphics
+			board.play(choice, g.getPlayed(), g.getBuilt());
 			Player player = board.getPreviousPlayer();
 			/*g.setCoins(player.getNumCoins());//send amount of coins
 			g.point(player.getMilitaryVictories(),player.getMilitaryDefeats(), player.getMilitaryDefeats(), player.getMilitaryPoints(), player.getVictoryPoints()); // send military stuff
@@ -32,7 +32,7 @@ public class Runner {
 			Player nextPlayer = board.getCurrentPlayer();
 			g.setNextPlayer(nextPlayer);
 			Player PrevPlayer = board.getNextPlayer();
-			g.setPrePlayer(PrevPlayer);
+			g.setPreviousPlayer(PrevPlayer);
 			setChoices();
 		}
 		g.setWinner(board.declareWinner()); //send the graphics class the player number for displaying it 
