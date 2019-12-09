@@ -18,6 +18,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 public class GraphicsClass extends JPanel implements MouseListener{
 	private JFrame frame;
 	private int x,y, choice;
+	private int winner = (Integer) 4; // 4 just being a random number i made up
 	private Player currentPlayer, previousPlayer, nextPlayer;
 	private int age;
 	private Card bCard, pCard, wCard;
@@ -44,6 +45,16 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			BufferedImage background = ImageIO.read(new File("Background.jpg"));
 			g.drawImage(background, 0,0, frame);
 		} catch (IOException e1) {}
+		
+		//display winner
+		if(winner != 4) {
+			frame  = new JFrame("7 Wonders");
+			frame.setSize(150, 100);
+			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+			g.drawString("Player " + winner + "Wins", 50,50);
+		}
 		
 		//draw rectangle
 		g.drawRect(420, 755, 1080, 350);
@@ -325,6 +336,10 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			y = 0;
 		}
 		
+	}
+	
+	public void setWinner(int w) {
+		winner = w;
 	}
 	
 	public int playerChoice() {
