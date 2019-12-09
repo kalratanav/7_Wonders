@@ -1,21 +1,31 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.ListIterator;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.text.html.HTMLDocument.Iterator;
 public class GraphicsClass extends JPanel implements MouseListener{
 	private JFrame frame;
 	private int x,y;
 	private Player currentPlayer, previousPlayer, nextPlayer;
-	public GraphicsClass(/*Player current, Player next, Player previouse*/) 
+	private int age;
+	public GraphicsClass(int a, Player current, Player next, Player previous) 
 	{
+		setCurrentPlayer(current);
+		setNextPlayer(next);
+		setPreviousPlayer(previous);
+		setAge(a);
 		frame  = new JFrame("7 Wonders");
 		frame.setSize(1920, 1080);
 		frame.setVisible(true);
@@ -25,6 +35,13 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	}
 	public void paintComponent(Graphics g)
 	{
+		
+		//background
+		try {
+			BufferedImage background = ImageIO.read(new File("Background.jpg"));
+			g.drawImage(background, 0,0, frame);
+		} catch (IOException e1) {}
+		
 		//draw rectangle
 		g.drawRect(420, 755, 1080, 350);
 		g.drawRect(0,0,960,125);
@@ -33,15 +50,15 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		//age card back
 		try {
 			BufferedImage backOfCard = ImageIO.read(new File("Age1_Card.png")); // make if statement to display the correct age card
-			g.drawImage(backOfCard, 20, 725, frame);
+			g.drawImage(backOfCard, 20, 665, frame);
 		} catch (IOException e1) {}
 		
 		//current players wonders
 		try {
-			BufferedImage wonder1 = ImageIO.read(new File("Gizah"+"_wonder1.PNG"));
-			BufferedImage wonder2 = ImageIO.read(new File("Gizah"+"_wonder2.PNG"));
-			BufferedImage wonder3 = ImageIO.read(new File("Gizah"+"_wonder3.PNG"));
-			BufferedImage resource = ImageIO.read(new File("Gizah" + "_resource.png"));
+			BufferedImage wonder1 = ImageIO.read(new File(currentPlayer.getWonder().getName() + "_wonder1.PNG"));
+			BufferedImage wonder2 = ImageIO.read(new File(currentPlayer.getWonder().getName()+"_wonder2.PNG"));
+			BufferedImage wonder3 = ImageIO.read(new File(currentPlayer.getWonder().getName()+"_wonder3.PNG"));
+			BufferedImage resource = ImageIO.read(new File(currentPlayer.getWonder().getName() + "_resource.png"));
 			g.drawImage(wonder1, 525, 695, frame);
 			g.drawImage(wonder2, 840, 695, frame);
 			g.drawImage(wonder3, 1155, 695, frame);
@@ -54,7 +71,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(coin, 600, 636, frame);
 		} catch (IOException e) {}
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 45));
-		g.drawString("x1", 676, 690);//gets number of coins
+		g.drawString("x" + currentPlayer.getNumCoins(), 676, 690);//gets number of coins
 		
 		//Victory point Display
 		try {
@@ -62,7 +79,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(victoryPoint, 915, 622, frame);
 		} catch (IOException e) {}
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 45));
-		g.drawString("x1", 995, 690);
+		g.drawString("x" + currentPlayer.getVictoryPoints(), 995, 690);
 		
 		//Military point Display
 		try {
@@ -70,7 +87,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(militaryP, 1230, 625, frame);
 		} catch (IOException e) {}
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 45));
-		g.drawString("x1", 1306, 690);
+		g.drawString("x" + currentPlayer.getMilitaryPoints(), 1306, 690);
 				
 		//Display Victory tokens
 		try {
@@ -78,7 +95,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(victoryT, 1075, 653,frame);
 		} catch (IOException e) {}
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-		g.drawString("x1", 1115, 690); //gets number of victory points
+		g.drawString("x" + currentPlayer.getMilitaryVictories(), 1120, 690); //gets number of victory points
 		
 		//Display Defeat tokens
 				try {
@@ -86,34 +103,149 @@ public class GraphicsClass extends JPanel implements MouseListener{
 					g.drawImage(defeatT, 750, 653,frame);
 				} catch (IOException e) {}
 				g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-				g.drawString("x1", 800, 690); //gets number of victory points
+				g.drawString("x" + currentPlayer.getMilitaryDefeats(), 800, 690); //gets number of victory points
 				
 		//next player stuff
 		//name
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-		g.drawString("Player N", 350,40);
+		g.drawString("Player " + nextPlayer.getPlayerNum(), 350,40);
 		
 		g.setColor(Color.GREEN);
 		g.fillRect(225, 55, 425, 70);
 		
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
 		g.setColor(Color.BLACK);
-		g.drawString("Click Here to View Player N", 285, 90);
+		g.drawString("Click Here to View Player " + nextPlayer.getPlayerNum(), 285, 90);
 		
+		//previous player stuff
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+		g.drawString("Player " + previousPlayer.getPlayerNum(), 350 + 950,40);
 		
+		g.setColor(Color.GREEN);
+		g.fillRect(225 + 950, 55, 425, 70);
+		
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+		g.setColor(Color.BLACK);
+		g.drawString("Click Here to View Player " + previousPlayer.getPlayerNum(), 285 + 950, 90);
+		
+		//load hand
+		try {
+			BufferedImage card;
+			int x = 290;
+			for(int i = 0; i < currentPlayer.getPlayerHand().size(); i++) {
+				card = ImageIO.read(new File(currentPlayer.getPlayerHand().get(i).getName() + "_Big.png"));
+				Image tmp = card.getScaledInstance(100, 150, Image.SCALE_SMOOTH);
+				g.drawImage(tmp,x + 150,765, frame);
+				x+= 150;
+			}
+		} catch (IOException e2) {}
+		
+		//load placed cards brown x = 450; silver x = 600, blue x = 750; red x = 900; purple x =1050; gold x = 1200; beginning y = 150;
+		try {
+			//brown
+			if(currentPlayer.getWonder().getCardsPlaced().get("Brown").size() != 0 || currentPlayer.getWonder().getCardsPlaced().get("Brown") == null) {
+				BufferedImage brown;
+				Image tmp;
+				int y = 85;
+				HashSet<Card> brownCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
+				ListIterator<Card> itB = (ListIterator<Card>) brownCards.iterator();
+				while(itB.hasNext()) {
+					brown = ImageIO.read(new File(itB.next().getName() + "_Thin.png"));
+					tmp = brown.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+					g.drawImage(tmp,450,y + 65, frame);
+					y += 65;
+				}
+			}
+			
+			
+			//silver
+			if(currentPlayer.getWonder().getCardsPlaced().get("Gray").size() != 0) {
+				BufferedImage silver;
+				Image tmp;
+				int y = 85;
+				HashSet<Card> silverCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
+				ListIterator<Card> itS = (ListIterator<Card>) silverCards.iterator();
+				while(itS.hasNext()) {
+					silver = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
+					tmp = silver.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+					g.drawImage(tmp,600,y + 65, frame);
+					y += 65;
+				}
+			}
+			
+			//blue
+			if(currentPlayer.getWonder().getCardsPlaced().get("Blue").size() != 0) {
+				BufferedImage blue;
+				Image tmp;
+				int y = 85;
+				HashSet<Card> blueCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
+				ListIterator<Card> itBl = (ListIterator<Card>) blueCards.iterator();
+				while(itBl.hasNext()) {
+					blue = ImageIO.read(new File(itBl.next().getName() + "_Thin.png"));
+					tmp = blue.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+					g.drawImage(tmp,750,y + 65, frame);
+					y += 65;
+				}
+			}
+			
+			//Red
+			if(currentPlayer.getWonder().getCardsPlaced().get("Red").size() != 0) {
+				BufferedImage red;
+				Image tmp;
+				int y = 85;
+				HashSet<Card> redCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
+				ListIterator<Card> itR = (ListIterator<Card>) redCards.iterator();
+				while(itR.hasNext()) {
+					red = ImageIO.read(new File(itR.next().getName() + "_Thin.png"));
+					tmp = red.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+					g.drawImage(tmp,900,y + 65, frame);
+					y += 65;
+				}
+			}
+			
+			//Purple
+			if(currentPlayer.getWonder().getCardsPlaced().get("Purple").size() != 0) {
+				BufferedImage purple;
+				Image tmp;
+				int y = 85;
+				HashSet<Card> purpleCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
+				ListIterator<Card> itP = (ListIterator<Card>) purpleCards.iterator();
+				while(itP.hasNext()) {
+					purple = ImageIO.read(new File(itP.next().getName() + "_Thin.png"));
+					tmp = purple.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+					g.drawImage(tmp,1050,y + 65, frame);
+					y += 65;
+				}
+			}
+			
+			//Yellow
+			if(currentPlayer.getWonder().getCardsPlaced().get("Yellow").size() != 0) {
+				BufferedImage yellow;
+				Image tmp;
+				int y = 85;
+				HashSet<Card> yellowCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
+				ListIterator<Card> ity = (ListIterator<Card>) yellowCards.iterator();
+				while(ity.hasNext()) {
+					yellow = ImageIO.read(new File(ity.next().getName() + "_Thin.png"));
+					tmp = yellow.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+					g.drawImage(tmp,1200,y + 65, frame);
+					y += 65;
+				}
+			}
+		} catch (IOException e) {}
 		
 		//loading next Player window
 		if(x >= 225 && x <= 650 && y >= 55 && y <= 123) {
-			/*
-			JFrame nextFrame  = new JFrame("(Insert Next Player)");
-			nextFrame.setSize(1080, 720);
-			nextFrame.setVisible(true);
-			nextFrame.add(this.loadNextPlayer(g));
-			setLayout(null);
-			
-			g.drawString("HELLO", 100, 100);
-			*/
-			new NextPlayerWindow();
+			new NextPlayerWindow(nextPlayer);
+			x = 0;
+			y = 0;
+		}
+		
+		//loading previous Player window
+		if(x >= 1175 && x <= 1600 && y >=55 && y<= 120) {
+			new PreviousPlayerWindow(previousPlayer);
+			x = 0;
+			y = 0;
 		}
 		
 	}
@@ -125,9 +257,12 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		x = e.getX();
 		y = e.getY();
 		System.out.println(x + " " + y);
-		//Runner.play();
 		
 		repaint();	
+	}
+	
+	public void setAge(int a) {
+		age = a;
 	}
 	
 	public void setCurrentPlayer(Player p) {
@@ -156,5 +291,3 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	}
 	
 }
-
-
