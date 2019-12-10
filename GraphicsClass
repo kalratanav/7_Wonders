@@ -47,6 +47,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(background, 0,0, frame);
 		} catch (IOException e1) {}
 		
+		/*
 		//display winner
 		if(winner != 4) {
 			frame  = new JFrame("7 Wonders");
@@ -55,7 +56,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
 			g.drawString("Player " + winner + "Wins", 50,50);
-		}
+		} */
 		
 		//draw rectangle
 		g.drawRect(420, 755, 1080, 350);
