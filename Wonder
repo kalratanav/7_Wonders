@@ -183,13 +183,15 @@ public class Wonder {
 		{
 			if(b[i].contains("."))
 			{
-				String []c= a.split(".");
+				String []c = b[i].split(".");
+				b[i] = c[0];
+				//String []c= a.split(".");
 				/*for(int k = 0; k<c.length; k++)
 				{
 					
 				}*/
-				String d[] = c[0].split(" ");
-				b[i] = d[d.length-1];
+				//String d[] = c[0].split(" ");
+				//b[i] = d[d.length-1];*/
 			}
 		}
 		for(int i = 0 ; i<b.length; i+=2)
@@ -346,48 +348,49 @@ public class Wonder {
 	}
 	public String[] decode2(String b)
 	{
+		
 		if(b.contains("."))
 		{
 			return decodeBenefits(b);
 		}
-		int c = b.split(" ").length;
-		String a[] = new String[c];
-		for(int i = 0 ; i<c; i+=2) 
+		String []c = b.split(" ");
+		String a[] = new String[c.length];
+		for(int i = 0 ; i<c.length; i+=2) 
 		{
-			if(b.compareTo("s")==0) {
+			if(c[i].compareTo("s")==0) {
 				a[i] = "stone";
 			}
-			else if(b.compareTo("w")==0) {
+			else if(c[i].compareTo("w")==0) {
 				a[i] = "wood";
 			}
-			else if(b.compareTo("c")==0) {
+			else if(c[i].compareTo("c")==0) {
 				a[i] = "clay";
 			}
-			else if(b.compareTo("o")==0) {
+			else if(c[i].compareTo("o")==0) {
 				a[i] = "ore";
 			}
-			else if(b.compareTo("p")==0) {
+			else if(c[i].compareTo("p")==0) {
 				a[i] = "papyrus";
 			}
-			else if(b.compareTo("l")==0) {
+			else if(c[i].compareTo("l")==0) {
 				a[i] = "loom";
 			}
-			else if(b.compareTo("g")==0) {
+			else if(c[i].compareTo("g")==0) {
 				a[i] = "glass";
 			}
-			else if(b.compareTo("t")==0) {
+			else if(c[i].compareTo("t")==0) {
 				a[i] = "tablet";
 			}
-			else if(b.compareTo("st")==0) {
+			else if(c[i].compareTo("st")==0) {
 				a[i] = "sextant";
 			}
-			else if(b.compareTo("gr")==0) {
+			else if(c[i].compareTo("gr")==0) {
 				a[i] = "gear";
 			}
-			else if(b.compareTo("vp")==0) {
+			else if(c[i].compareTo("vp")==0) {
 				a[i] = "VictoryPoints";
 			}
-			else if(b.compareTo("mp")==0) {
+			else if(c[i].compareTo("mp")==0) {
 				a[i] = "MilitaryPoints";
 			}
 		}
