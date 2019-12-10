@@ -46,18 +46,41 @@ public class Wonder {
 			resource.put(key, amount);
 			
 	}
-	public boolean buildWonder() {
-		boolean build = true;
-		TreeMap<String, Integer> temp= new TreeMap<String, Integer>();
-		for(int i =0; i<cardReq.length; i++)
+	public boolean buildWonder(boolean traded) {
+		if(!traded)
 		{
-			if(i%2!=0) {
-				temp.put(cardReq[i-1], Integer.parseInt(cardReq[i]));
-				if(!(resource.get(cardReq[i-1])>= temp.get(cardReq[i-1])))
-						build = false;
+			boolean build = true;
+			TreeMap<String, Integer> temp= new TreeMap<String, Integer>();
+			for(int i =0; i<cardReq.length; i++)
+			{
+				if(i%2!=0) {
+					temp.put(cardReq[i-1], Integer.parseInt(cardReq[i]));
+					if(!(resource.get(cardReq[i-1])>= temp.get(cardReq[i-1])))
+							build = false;
+				}
 			}
+			if(build)
+			{
+				partsBuilding++;
+				if(benefitChoices[partsBuilding-1].contains("."))
+				{
+					canAccessChoices= true;
+					
+				}
+				else {
+					String a[] = wonderBenefits[partsBuilding-1].split(" ");
+					for(int i = 0; i<a.length;i+=2)
+					{
+						if(resource.containsKey(a[i]))
+							resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
+						else
+							resource.put(a[i], Integer.parseInt(a[i+1]));
+					}
+				}
+			}
+			return build;
 		}
-		if(build)
+		else
 		{
 			partsBuilding++;
 			if(benefitChoices[partsBuilding-1].contains("."))
@@ -76,7 +99,7 @@ public class Wonder {
 				}
 			}
 		}
-		return build;
+		return true;
 	}
 	public void playedCard(Card a)
 	{
@@ -150,6 +173,19 @@ public class Wonder {
 	public String decodeAndAddResource(String a)
 	{
 		String b[] = a.split(" ");
+		for(int i = 0 ; i<b.length; i+=2)
+		{
+			if(b[i].contains("."))
+			{
+				String []c= a.split(".");
+				/*for(int k = 0; k<c.length; k++)
+				{
+					
+				}*/
+				String d[] = c[0].split(" ");
+				b[i] = d[d.length-1];
+			}
+		}
 		for(int i = 0 ; i<b.length; i+=2)
 		{
 			if(b[i].compareTo("s")==0) {
