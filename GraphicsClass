@@ -87,7 +87,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		
 		//current players wonders
 		try {
-			BufferedImage wonder1 = ImageIO.read(new File(currentPlayer.getWonder().getName() + "_wonder1.PNG"));
+			BufferedImage wonder1 = ImageIO.read(new File(currentPlayer.getWonder().getName()+"_wonder1.png"));
 			BufferedImage wonder2 = ImageIO.read(new File(currentPlayer.getWonder().getName()+"_wonder2.PNG"));
 			BufferedImage wonder3 = ImageIO.read(new File(currentPlayer.getWonder().getName()+"_wonder3.PNG"));
 			BufferedImage resource = ImageIO.read(new File(currentPlayer.getWonder().getName() + "_resource.png"));
