@@ -25,6 +25,10 @@ public class Wonder {
 		cardReq =decode2(temp[2]);
 		canAccessChoices = false;
 	} 
+	public String[] getCardReq ()
+	{
+		return cardReq;
+	}
 	public void benefitChoice(int choice)
 	{
 		if(!canAccessChoices)
@@ -42,7 +46,7 @@ public class Wonder {
 			resource.put(key, amount);
 			
 	}
-	public void buildWonder() {
+	public boolean buildWonder() {
 		boolean build = true;
 		TreeMap<String, Integer> temp= new TreeMap<String, Integer>();
 		for(int i =0; i<cardReq.length; i++)
@@ -59,6 +63,7 @@ public class Wonder {
 			if(benefitChoices[partsBuilding-1].contains("."))
 			{
 				canAccessChoices= true;
+				
 			}
 			else {
 				String a[] = wonderBenefits[partsBuilding-1].split(" ");
@@ -71,6 +76,7 @@ public class Wonder {
 				}
 			}
 		}
+		return build;
 	}
 	public void playedCard(Card a)
 	{
