@@ -17,6 +17,12 @@ public class Wonder {
 		resource = new TreeMap<String, Integer>();
 		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
+		cardsPlaced.put("Yellow", new HashSet<Card>());
+		cardsPlaced.put("Blue", new HashSet<Card>());
+		cardsPlaced.put("Red", new HashSet<Card>());
+		cardsPlaced.put("Purple", new HashSet<Card>());
+		cardsPlaced.put("Brown", new HashSet<Card>());
+		cardsPlaced.put("Gray", new HashSet<Card>());
 		String []temp = wonder.split("/");
 		name = temp[0];
 		defaultResource += decodeAndAddResourceBeginning(temp[1]);
