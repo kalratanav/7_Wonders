@@ -24,18 +24,18 @@ public class Runner {
 		{
 			for(int k = 0; k<18; k++)
 			{
-				int choice = g.playerChoice();//gets the card choice from graphics
-				board.play(choice, g.getPlayed(), g.getBuilt());
 				Player player = board.getPreviousPlayer();
-				/*g.setCoins(player.getNumCoins());//send amount of coins
-				g.point(player.getMilitaryVictories(),player.getMilitaryDefeats(), player.getMilitaryDefeats(), player.getMilitaryPoints(), player.getVictoryPoints()); // send military stuff
-				g.*/
 				g.setAge(board.getCurrentAge());
 				g.setCurrentPlayer(player); //send player object
 				Player nextPlayer = board.getCurrentPlayer();
 				g.setNextPlayer(nextPlayer);
 				Player PrevPlayer = board.getNextPlayer();
 				g.setPreviousPlayer(PrevPlayer);
+				if(g.getDecission()) {
+					int choice = g.playerChoice();//gets the card choice from graphics
+					board.play(choice, g.getPlayed(), g.getBuilt());
+				}
+				
 			}
 			board.endOfAge();
 		}
