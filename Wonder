@@ -359,7 +359,7 @@ public class Wonder {
 		}
 		String []c = b.split(" ");
 		String a[] = new String[c.length];
-		for(int i = 0 ; i<c.length; i+=2) 
+		for(int i = 0 ; i<c.length; i++) 
 		{
 			if(c[i].compareTo("s")==0) {
 				a[i] = "stone";
@@ -397,6 +397,8 @@ public class Wonder {
 			else if(c[i].compareTo("mp")==0) {
 				a[i] = "MilitaryPoints";
 			}
+			else
+				a[i] = c[i];
 		}
 		return a;
 	}
