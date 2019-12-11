@@ -1,0 +1,57 @@
+{
+		String a[] = b.split(" ");
+		for(int i = 0 ; i<a.length; i++)
+		{
+			if(a[i].contains("."))
+			{
+				String ln = a[i];
+				String [] resourceChoices;
+				if(getName().equals("Babylon"))
+				{
+					resourceChoices = new String[6];
+					resourceChoices[0]="";
+					resourceChoices[1]="";
+					resourceChoices[2]="";
+					resourceChoices[3]="";
+					resourceChoices[4]="";
+					resourceChoices[5]="";
+				}
+				else
+				{
+					resourceChoices = new String[8];
+					resourceChoices[0]="";
+					resourceChoices[1]="";
+					resourceChoices[2]="";
+					resourceChoices[3]="";
+					resourceChoices[4]="";
+					resourceChoices[5]="";
+					resourceChoices[6]="";
+					resourceChoices[7]="";
+				}
+				int count = 0;
+				String ret = "";
+				for(int x = 0; x<ln.length(); x++)
+				{
+					if(ln.charAt(x)=='.')
+					{
+						count++;
+					}
+					else
+						resourceChoices[count]+=""+ln.charAt(x);
+				}
+				for(int k = 0; k<resourceChoices.length; k+=2)
+				{
+					resourceChoices[k] = decode(resourceChoices[k]);
+				}
+				int c2 = 0;
+				while(c2<resourceChoices.length)
+				{
+					if(c2!=0&&c2%2==0)
+					{
+						
+					}
+				}
+			}
+		}
+		return a;
+	}
