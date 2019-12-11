@@ -1,0 +1,124 @@
+  public void play(int choice, boolean isPlayed, boolean builtWonder)
+  {
+
+  	 ArrayList<Card> temp = getCurrentPlayer().getPlayerHand();
+  	 Card c = temp.remove(choice);
+ 
+  	 if(isPlayed)
+  	 {
+  		 getCurrentPlayer().getWonder().benefitChoice(choice);
+  		 String[] rc = c.getResourceCost().split("&");
+  		 TreeMap<String, Integer> resourcesNeeded = new TreeMap<String, Integer>();
+  		 for(int x = 0; x< rc.length; x++)
+  		 {
+  			 if(rc[x].contains("s")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+  				 if(getCurrentPlayer().getWonder().getResources().get("stone")==null)
+				{
+  					getCurrentPlayer().getWonder().getResources().put("stone", 0);
+				}
+
+  				 resourcesNeeded.put("stone", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("stone"));
+  			 }
+  			 else if(rc[x].contains("w")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+  				if(getCurrentPlayer().getWonder().getResources().get("wood")==null)
+				{
+  					getCurrentPlayer().getWonder().getResources().put("wood", 0);
+				}
+  				resourcesNeeded.put("wood", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("wood"));
+  			 }
+  			  
+  			 else if(rc[x].contains("c")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+  				if(getCurrentPlayer().getWonder().getResources().get("clay")==null)
+				{
+  					getCurrentPlayer().getWonder().getResources().put("wood", 0);
+				}
+  				resourcesNeeded.put("clay", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("clay"));
+  			 }
+  			 else if(rc[x].contains("o")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+  				if(getCurrentPlayer().getWonder().getResources().get("ore")==null)
+				{
+  					getCurrentPlayer().getWonder().getResources().put("ore", 0);
+				}
+  				resourcesNeeded.put("ore", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("ore"));
+  			 }
+  			 else if(rc[x].contains("p")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+  				if(getCurrentPlayer().getWonder().getResources().get("ore")==null)
+				{
+  					getCurrentPlayer().getWonder().getResources().put("ore", 0);
+				}
+  				resourcesNeeded.put("papyrus", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("papyrus"));
+  			 }
+  			 else if(rc[x].contains("l")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+
+   				if(getCurrentPlayer().getWonder().getResources().get("ore")==null)
+ 				{
+   					getCurrentPlayer().getWonder().getResources().put("ore", 0);
+ 				}
+  			 	resourcesNeeded.put("loom", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("loom"));
+  			 }
+  			 else if(rc[x].contains("g")&&!rc[x].contains("0")&&!rc[x].contains("null"))
+  			 {
+  				if(getCurrentPlayer().getWonder().getResources().get("ore")==null)
+ 				{
+   					getCurrentPlayer().getWonder().getResources().put("ore", 0);
+ 				}
+  				resourcesNeeded.put("glass", Integer.parseInt(rc[x].substring(1))-getCurrentPlayer().getWonder().getResources().get("glass"));
+  			 }
+  		 }
+  		 if(trade(resourcesNeeded))
+  		 {
+  		 	 decode(c);
+  		 	 getCurrentPlayer().getWonder().playedCard(c);
+  		 }
+  		 else
+  		 {
+  			burnCard(c);
+		  	System.out.println("Ha, you can't trade for playing the card so we made you burn it");
+  		 }
+  	 }
+  	 else if(builtWonder)
+  	 {
+  		 if(getCurrentPlayer().getWonder().buildWonder(false)==false)
+  		 {
+  			 String[] rc = getCurrentPlayer().getWonder().getCardReq();
+  			 TreeMap<String, Integer> resourcesNeeded = new TreeMap<String, Integer>();
+  		  	 for(int x = 0; x< rc.length; x=x+2)
+  		  	 {
+  		  		 if(rc[x].contains("stone"))
+  		  			 resourcesNeeded.put("stone", Integer.parseInt(rc[x+1]) - getCurrentPlayer().getWonder().getResources().get("stone"));
+  		  		 else if(rc[x].contains("wood"))
+  		  			 resourcesNeeded.put("wood", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("wood"));
+  		  		 else if(rc[x].contains("clay"))
+  		  			 resourcesNeeded.put("clay", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("clay"));
+  		  		 else if(rc[x].contains("ore")&&!rc[x].contains("0"))
+  		  			 resourcesNeeded.put("ore", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("ore"));
+  		  		 else if(rc[x].contains("papyrus")&&!rc[x].contains("0"))
+  		  			 resourcesNeeded.put("papyrus", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("papyrus"));
+  		  		 else if(rc[x].contains("loom")&&!rc[x].contains("0"))
+  		  			 resourcesNeeded.put("loom", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("loom"));
+  		  		 else if(rc[x].contains("glass")&&!rc[x].contains("0"))
+  		  			 resourcesNeeded.put("glass", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("glass"));
+  		  	}
+  		  	if(trade(resourcesNeeded) == false)
+  		  	{
+  		  		burnCard(c);
+  		  		System.out.println("Ha, you can't trade for building the wonder so we made you burn it");
+  		  	}
+  		  	else
+  		  		getCurrentPlayer().getWonder().buildWonder(true);
+  		 }
+  	 }
+  	 else
+  		 burnCard(c);
+  	 nextTurn();
+  	 if(currentAge==3&&getCurrentPlayer().getPlayerHand().size()==1)
+  		 gameRunning = false;
+  	 
+  }
+  
