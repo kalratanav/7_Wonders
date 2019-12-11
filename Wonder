@@ -187,19 +187,26 @@ public class Wonder {
 			a = a.replaceAll("/", " ");
 			String str = "";
 			int x=0;
-			while(str.length()<27)
+			if(a.length()>4)
 			{
-				if(a.charAt(x)=='c'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='o'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='s'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='w'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='g'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='l'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='p'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2'))
+				while(str.length()<27)
 				{
-					str += a.substring(x, x+1) + " ";
-					x++;
+					if(a.charAt(x)=='c'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='o'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='s'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='w'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='g'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='l'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2')||a.charAt(x)=='p'&&(a.charAt(x+1)=='0'||a.charAt(x+1)=='1'||a.charAt(x+1)=='2'))
+					{
+						str += a.substring(x, x+1) + " ";
+						x++;
+					}
+					else
+					{
+						str+= a.substring(x, x+1);
+						x++;
+					}
+					
 				}
-				else
-				{
-					str+= a.substring(x, x+1);
-					x++;
-				}
-				
+			}
+			else
+			{
+				str+=a;
 			}
 			
 			String d[] = str.split(" ");
@@ -228,7 +235,7 @@ public class Wonder {
 					//String d[] = c[0].split(" ");
 					//b[i] = d[d.length-1];*/
 					first=true;
-					i++;
+					//i++;
 				}
 				else
 					resources.add(d[i]);
