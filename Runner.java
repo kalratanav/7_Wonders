@@ -10,6 +10,7 @@ public class Runner {
 		play();
 		
 	}
+	//graphics
 	
 	public static void play() {
 		System.out.println("ys");
@@ -36,8 +37,8 @@ public class Runner {
 		}
 		
 	}
-	
-	/*
+	//text
+	/* 
 	public static void play()
 	{
 		for(int i = 0 ; i<3; i++)
