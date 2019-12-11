@@ -90,6 +90,26 @@ public class NextPlayerWindow extends JPanel{
 		//placed cards
 		try {
 			//brown
+			//brown
+			System.out.println("trur");
+			if(player.getWonder().getCardsPlaced().containsKey("Brown")) {
+				System.out.println("trur");
+				if(player.getWonder().getCardsPlaced().get("Brown").size() > 0) {
+					System.out.println("trur");
+					BufferedImage brown;
+					Image tmp;
+					int y = 85;
+					HashSet<Card> brownCards = player.getWonder().getCardsPlaced().get("Brown");
+					for(Card c: brownCards) {
+						brown = ImageIO.read(new File(c.getName() + "_Thin.png"));s
+						g.drawImage(brown, 100,100,f);
+						//tmp = brown.getScaledInstance(150,65,Image.SCALE_SMOOTH);
+						//g.drawImage(tmp,450,y + 65, frame);
+						//y += 65;
+					}
+				}
+			}
+			/*
 			if(player.getWonder().getCardsPlaced().containsKey("Brown")) {
 				if(player.getWonder().getCardsPlaced().get("Brown").size() > 0) {
 					BufferedImage brown;
@@ -104,7 +124,7 @@ public class NextPlayerWindow extends JPanel{
 						y += 65;
 					}
 				}
-			}
+			}*/
 			
 			
 			//silver
