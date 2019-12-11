@@ -425,4 +425,8 @@ public class Wonder {
 			b+=a[i]+" ";
 		return b;
 	}
+	public String[] getWonderBenefits()
+	{
+		return wonderBenefits;
+	}
 }
