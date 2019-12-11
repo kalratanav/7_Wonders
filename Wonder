@@ -121,6 +121,7 @@ public class Wonder {
 	}
 	public String decodeAndAddResourceBeginning(String a)
 	{
+		a.replaceAll("/", " ");
 		String b[] = a.split(" ");
 		for(int i = 0 ; i<b.length; i+=2)
 		{
@@ -210,7 +211,7 @@ public class Wonder {
 			b = new String[resources.size()];
 			for(int i = 0; i<resources.size();i++)
 			{
-				d[i] = resources.get(i);
+				b[i] = resources.get(i);
 			}
 			for(int i = 0 ; i<b.length; i+=2)
 			{
@@ -416,6 +417,10 @@ public class Wonder {
 			else if(c[i].compareTo("mp")==0) {
 				a[i] = "MilitaryPoints";
 			}
+			else if(c[i].compareTo("graveyard")==0)
+				a[i] = "graveyard";
+			else if(c[i].compareTo("free_build")==0)
+				a[i] = "free_build";
 			else
 				a[i] = c[i];
 		}
