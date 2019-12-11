@@ -57,14 +57,17 @@ public class Wonder {
 		{
 			boolean build = true;
 			TreeMap<String, Integer> temp= new TreeMap<String, Integer>();
-			for(int i =0; i<cardReq.length; i++)
+			temp.put(cardReq[partsBuilding], Integer.parseInt(cardReq[partsBuilding+1]));
+			/*for(int i =0; i<cardReq.length; i++)
 			{
 				if(i%2!=0) {
 					temp.put(cardReq[i-1], Integer.parseInt(cardReq[i]));
 					if(!(resource.get(cardReq[i-1])>= temp.get(cardReq[i-1])))
 							build = false;
 				}
-			}
+			}*/
+			if(!(resource.get(cardReq[partsBuilding])>= temp.get(cardReq[partsBuilding])))
+				build = false;
 			if(build)
 			{
 				partsBuilding++;
