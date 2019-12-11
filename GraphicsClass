@@ -153,7 +153,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		//next player stuff
 		//name
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-		g.drawString("Player " + nextPlayer.getPlayerNum(), 350,40);
+		g.drawString("Next Player " + nextPlayer.getPlayerNum(), 300,40);
 		
 		g.setColor(Color.GREEN);
 		g.fillRect(225, 55, 425, 70);
@@ -164,7 +164,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		
 		//previous player stuff
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-		g.drawString("Player " + previousPlayer.getPlayerNum(), 350 + 950,40);
+		g.drawString("Previous Player " + previousPlayer.getPlayerNum(), 280 + 950,40);
 		
 		g.setColor(Color.GREEN);
 		g.fillRect(225 + 950, 55, 425, 70);
@@ -226,132 +226,14 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		}
 		
 		//load placed cards brown x = 450; silver x = 600, blue x = 750; red x = 900; purple x =1050; gold x = 1200; beginning y = 150;
-		
-		try {
-			
-			//brown
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Brown")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Brown").size() > 0) {
-					BufferedImage brown;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> brownCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
-					for(Card c: brownCards) {
-						brown = ImageIO.read(new File(c.getName() + "_Thin.png"));
-						g.drawImage(brown, 100,100,frame);
-						//tmp = brown.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						//g.drawImage(tmp,450,y + 65, frame);
-						//y += 65;
-					}
-				}
-			}
-			/*
-			//brown
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Brown")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Brown").size() > 0) {
-					BufferedImage brown;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> brownCards = currentPlayer.getWonder().getCardsPlaced().get("Brown");
-					ListIterator<Card> itB = (ListIterator<Card>) brownCards.iterator();
-					while(itB.hasNext()) {
-						brown = ImageIO.read(new File(itB.next().getName() + "_Thin.png"));
-						tmp = brown.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,450,y + 65, frame);
-						y += 65;
-					}
-				}
-			}*/
-			
-			
-			//silver
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Gray")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Gray").size() > 0) {
-					BufferedImage silver;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> silverCards = currentPlayer.getWonder().getCardsPlaced().get("Gray");
-					ListIterator<Card> itS = (ListIterator<Card>) silverCards.iterator();
-					while(itS.hasNext()) {
-						silver = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = silver.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,600,y + 65, frame);
-						y += 65;
-					}
-				}
-			}
-			
-			//blue
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Blue")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Blue").size() > 0) {
-					BufferedImage blue;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> blueCards = currentPlayer.getWonder().getCardsPlaced().get("Blue");
-					ListIterator<Card> itS = (ListIterator<Card>) blueCards.iterator();
-					while(itS.hasNext()) {
-						blue = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = blue.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,750,y + 65, frame);
-						y += 65;
-					}
-				}
-			}
-			
-			//Red
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Red")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Red").size() > 0) {
-					BufferedImage red;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> redCards = currentPlayer.getWonder().getCardsPlaced().get("Red");
-					ListIterator<Card> itS = (ListIterator<Card>) redCards.iterator();
-					while(itS.hasNext()) {
-						red = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = red.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,900,y + 65, frame);
-						y += 65;
-					}
-				}
-			}
-			
-			//purple
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Purple")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Purple").size() > 0) {
-					BufferedImage purple;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> purpleCards = currentPlayer.getWonder().getCardsPlaced().get("Purple");
-					ListIterator<Card> itS = (ListIterator<Card>) purpleCards.iterator();
-					while(itS.hasNext()) {
-						purple = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = purple.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,1050,y + 65, frame);
-						y += 65;
-					}
-				}
-			}
-			
-			//Yellow
-			if(currentPlayer.getWonder().getCardsPlaced().containsKey("Yellow")) {
-				if(currentPlayer.getWonder().getCardsPlaced().get("Yellow").size() > 0) {
-					BufferedImage yellow;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> yellowCards = currentPlayer.getWonder().getCardsPlaced().get("Yellow");
-					ListIterator<Card> itS = (ListIterator<Card>) yellowCards.iterator();
-					while(itS.hasNext()) {
-						yellow = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = yellow.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,1200,y + 65, frame);
-						y += 65;
-					}
-				}
-			}
-		}catch (IOException e2) {}
-		
-		
-			
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 15));
+		g.drawString("Placed Cards:", 10,150);
+		g.drawString("Brown = " + currentPlayer.getWonder().getCardsPlaced().get("Brown"), 10,200);
+		g.drawString("Silver = " + currentPlayer.getWonder().getCardsPlaced().get("Gray"), 10,250);
+		g.drawString("Blue = " + currentPlayer.getWonder().getCardsPlaced().get("Blue"), 10,300);
+		g.drawString("Red = " + currentPlayer.getWonder().getCardsPlaced().get("Red"), 10,350);
+		g.drawString("Purple = " + currentPlayer.getWonder().getCardsPlaced().get("Purple"), 10,400);
+		g.drawString("Gold = " + currentPlayer.getWonder().getCardsPlaced().get("Yellow"), 10,450);
 		
 		//loading next Player window
 		if(x >= 225 && x <= 650 && y >= 55 && y <= 123) {
