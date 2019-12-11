@@ -121,7 +121,6 @@ public class Wonder {
 	}
 	public String decodeAndAddResourceBeginning(String a)
 	{
-		a.replaceAll("/", " ");
 		String b[] = a.split(" ");
 		for(int i = 0 ; i<b.length; i+=2)
 		{
@@ -186,6 +185,7 @@ public class Wonder {
 	{
 //		if(a.contains("."))
 	//	{
+		a.replaceAll("/", " ");
 			String d[] = a.split(" ");
 			String[]c;
 			String[]b;
