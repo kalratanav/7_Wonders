@@ -37,6 +37,8 @@ public class NextPlayerWindow extends JPanel{
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 		g.drawString("Player "+ player.getPlayerNum(), 683,40);
 		
+		g.drawString(player.getWonder().getName(), 20, 700);
+		
 		//wonders
 		try {
 			BufferedImage wonder1 = ImageIO.read(new File(player.getWonder().getName() + "_wonder1.png"));
@@ -98,27 +100,27 @@ public class NextPlayerWindow extends JPanel{
 		}
 		g.drawString("Silver = ", 25,240);
 		for(Card c : player.getWonder().getCardsPlaced().get("Gray")) {
-			g.drawString(c.getName()+",",100 + i,200);
+			g.drawString(c.getName()+",",100 + i,240);
 			i += 75;
 		}
 		g.drawString("Blue = ", 25,280);
 		for(Card c : player.getWonder().getCardsPlaced().get("Blue")) {
-			g.drawString(c.getName()+",",100 + i,200);
+			g.drawString(c.getName()+",",100 + i,280);
 			i += 75;
 		}
 		g.drawString("Red = ", 25,320);
 		for(Card c : player.getWonder().getCardsPlaced().get("Red")) {
-			g.drawString(c.getName()+",",100 + i,200);
+			g.drawString(c.getName()+",",100 + i,320);
 			i += 75;
 		}
 		g.drawString("Purple = ", 25,360);
 		for(Card c : player.getWonder().getCardsPlaced().get("Purple")) {
-			g.drawString(c.getName()+",",100 + i,200);
+			g.drawString(c.getName()+",",100 + i,360);
 			i += 75;
 		}
 		g.drawString("Gold = ", 25,400);
 		for(Card c : player.getWonder().getCardsPlaced().get("Yellow")) {
-			g.drawString(c.getName()+",",100 + i,200);
+			g.drawString(c.getName()+",",100 + i,400);
 			i += 75;
 		}
 	}
