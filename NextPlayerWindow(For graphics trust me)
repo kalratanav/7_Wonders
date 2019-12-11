@@ -88,130 +88,39 @@ public class NextPlayerWindow extends JPanel{
 		g.drawString("x" + player.getMilitaryDefeats(), 575, 650); //gets number of victory points
 		
 		//placed cards
-		try {
-			//brown
-			//brown
-			System.out.println("trur");
-			if(player.getWonder().getCardsPlaced().containsKey("Brown")) {
-				System.out.println("trur");
-				if(player.getWonder().getCardsPlaced().get("Brown").size() > 0) {
-					System.out.println("trur");
-					BufferedImage brown;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> brownCards = player.getWonder().getCardsPlaced().get("Brown");
-					for(Card c: brownCards) {
-						brown = ImageIO.read(new File(c.getName() + "_Thin.png"));s
-						g.drawImage(brown, 100,100,f);
-						//tmp = brown.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						//g.drawImage(tmp,450,y + 65, frame);
-						//y += 65;
-					}
-				}
-			}
-			/*
-			if(player.getWonder().getCardsPlaced().containsKey("Brown")) {
-				if(player.getWonder().getCardsPlaced().get("Brown").size() > 0) {
-					BufferedImage brown;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> brownCards = player.getWonder().getCardsPlaced().get("Brown");
-					ListIterator<Card> itB = (ListIterator<Card>) brownCards.iterator();
-					while(itB.hasNext()) {
-						brown = ImageIO.read(new File(itB.next().getName() + "_Thin.png"));
-						tmp = brown.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,250,y + 65, f);
-						y += 65;
-					}
-				}
-			}*/
-			
-			
-			//silver
-			if(player.getWonder().getCardsPlaced().containsKey("Gray")) {
-				if(player.getWonder().getCardsPlaced().get("Gray").size() > 0) {
-					BufferedImage silver;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> silverCards = player.getWonder().getCardsPlaced().get("Gray");
-					ListIterator<Card> itS = (ListIterator<Card>) silverCards.iterator();
-					while(itS.hasNext()) {
-						silver = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = silver.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,400,y + 65, f);
-						y += 65;
-					}
-				}
-			}
-			
-			//blue
-			if(player.getWonder().getCardsPlaced().containsKey("Blue")) {
-				if(player.getWonder().getCardsPlaced().get("Blue").size() > 0) {
-					BufferedImage blue;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> blueCards = player.getWonder().getCardsPlaced().get("Blue");
-					ListIterator<Card> itS = (ListIterator<Card>) blueCards.iterator();
-					while(itS.hasNext()) {
-						blue = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = blue.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,550,y + 65, f);
-						y += 65;
-					}
-				}
-			}
-			
-			//Red
-			if(player.getWonder().getCardsPlaced().containsKey("Red")) {
-				if(player.getWonder().getCardsPlaced().get("Red").size() > 0) {
-					BufferedImage red;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> redCards = player.getWonder().getCardsPlaced().get("Red");
-					ListIterator<Card> itS = (ListIterator<Card>) redCards.iterator();
-					while(itS.hasNext()) {
-						red = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = red.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,700,y + 65, f);
-						y += 65;
-					}
-				}
-			}
-			
-			//purple
-			if(player.getWonder().getCardsPlaced().containsKey("Purple")) {
-				if(player.getWonder().getCardsPlaced().get("Purple").size() > 0) {
-					BufferedImage purple;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> purpleCards = player.getWonder().getCardsPlaced().get("Purple");
-					ListIterator<Card> itS = (ListIterator<Card>) purpleCards.iterator();
-					while(itS.hasNext()) {
-						purple = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = purple.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,850,y + 65, f);
-						y += 65;
-					}
-				}
-			}
-			
-			//Yellow
-			if(player.getWonder().getCardsPlaced().containsKey("Yellow")) {
-				if(player.getWonder().getCardsPlaced().get("Yellow").size() > 0) {
-					BufferedImage yellow;
-					Image tmp;
-					int y = 85;
-					HashSet<Card> yellowCards = player.getWonder().getCardsPlaced().get("Yellow");
-					ListIterator<Card> itS = (ListIterator<Card>) yellowCards.iterator();
-					while(itS.hasNext()) {
-						yellow = ImageIO.read(new File(itS.next().getName() + "_Thin.png"));
-						tmp = yellow.getScaledInstance(150,65,Image.SCALE_SMOOTH);
-						g.drawImage(tmp,1000,y + 65, f);
-						y += 65;
-					}
-				}
-			}
-		}catch (IOException e2) {}
+		int i = 0;
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 15));
+		g.drawString("Placed Cards:", 75,160);
+		g.drawString("Brown = ", 25,200);
+		for(Card c : player.getWonder().getCardsPlaced().get("Brown")) {
+			g.drawString(c.getName()+",",100 + i,200);
+			i += 75;
+		}
+		g.drawString("Silver = ", 25,240);
+		for(Card c : player.getWonder().getCardsPlaced().get("Gray")) {
+			g.drawString(c.getName()+",",100 + i,200);
+			i += 75;
+		}
+		g.drawString("Blue = ", 25,280);
+		for(Card c : player.getWonder().getCardsPlaced().get("Blue")) {
+			g.drawString(c.getName()+",",100 + i,200);
+			i += 75;
+		}
+		g.drawString("Red = ", 25,320);
+		for(Card c : player.getWonder().getCardsPlaced().get("Red")) {
+			g.drawString(c.getName()+",",100 + i,200);
+			i += 75;
+		}
+		g.drawString("Purple = ", 25,360);
+		for(Card c : player.getWonder().getCardsPlaced().get("Purple")) {
+			g.drawString(c.getName()+",",100 + i,200);
+			i += 75;
+		}
+		g.drawString("Gold = ", 25,400);
+		for(Card c : player.getWonder().getCardsPlaced().get("Yellow")) {
+			g.drawString(c.getName()+",",100 + i,200);
+			i += 75;
+		}
 	}
 
 }
