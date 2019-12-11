@@ -48,16 +48,13 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(background, 0,0, frame);
 		} catch (IOException e1) {}
 		
-		/*
+		
 		//display winner
 		if(winner != 4) {
-			frame  = new JFrame("7 Wonders");
-			frame.setSize(150, 100);
-			frame.setVisible(true);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-			g.drawString("Player " + winner + "Wins", 50,50);
-		} */
+			g.drawString("Player " + winner + "Wins", 950,700);
+		} 
 		
 		//draw rectangle
 		g.drawRect(420, 755, 1080, 350);
@@ -140,7 +137,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			g.drawImage(victoryT, 1075, 653,frame);
 		} catch (IOException e) {}
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-		g.drawString("x" + currentPlayer.getMilitaryVictories(), 1120, 690); //gets number of victory points
+		g.drawString("x" + currentPlayer.getMilitaryVictories(), 1130, 690); //gets number of victory points
 		
 		//Display Defeat tokens
 		try {
@@ -179,7 +176,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			int x = 290;
 			for(int i = 0; i < currentPlayer.getPlayerHand().size(); i++) {
 				card = ImageIO.read(new File(currentPlayer.getPlayerHand().get(i).getName() + "_Big.png"));
-				Image tmp = card.getScaledInstance(100, 150, Image.SCALE_SMOOTH);
+				Image tmp = card.getScaledInstance(125, 175, Image.SCALE_SMOOTH);
 				g.drawImage(tmp,x + 150,765, frame);
 				x+= 150;
 			}
