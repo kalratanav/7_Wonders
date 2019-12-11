@@ -24,6 +24,7 @@ public class Wonder {
 		cardsPlaced.put("Purple", new HashSet<Card>());
 		cardsPlaced.put("Brown", new HashSet<Card>());
 		cardsPlaced.put("Gray", new HashSet<Card>());
+		cardsPlaced.put("Green", new HashSet<Card>());
 		String []temp = wonder.split("/");
 		name = temp[0];
 		defaultResource += decodeAndAddResourceBeginning(temp[1]);
@@ -114,9 +115,9 @@ public class Wonder {
 	}
 	public void playedCard(Card a)
 	{
-		HashSet<Card> oof = cardsPlaced.get(a.getColor());
-		oof.add(a);
-		cardsPlaced.put(a.getColor(), oof);
+		HashSet<Card> colorStack = cardsPlaced.get(a.getColor());
+		colorStack.add(a);
+		cardsPlaced.put(a.getColor(), colorStack);
 		decodeAndAddResource(a.getResource());
 	}
 	public String decodeAndAddResourceBeginning(String a)
