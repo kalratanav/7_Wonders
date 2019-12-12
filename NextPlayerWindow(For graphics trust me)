@@ -128,6 +128,7 @@ public class NextPlayerWindow extends JPanel{
 			g.drawString(c.getName()+",",100 + i,440);
 			i+=75;
 		}
+		g.drawString("Resources = " + currentPlayer.getWonder().getResources().toString(), 100, 480);
 	}
 
 }
