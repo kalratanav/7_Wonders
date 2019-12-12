@@ -51,7 +51,6 @@ public class Card {
 	}
 	public String toString()
 	{
-		return "Name:" + getName() + "; Effect:" + getEffect() + "; Cost:" +  getCost() + "; ResourceCost:" +  
-	getResourceCost() + "; FreeChain:" + getFreeChain() + "; Color:" + getColor() + "; Age:" + getAge();
+		return "Name: " + getName() + " Effect:  " + getEffect() +" Resources: " + getResource() + " Cost:" +  getCost() + " FreeChain:  " + getFreeChain() + " Age: " +  getAge();
 	}
 }
