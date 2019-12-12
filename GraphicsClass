@@ -38,6 +38,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addMouseListener(this);
 		setLayout(null);
+		winner = 4;
 	}
 	public void paintComponent(Graphics g)
 	{
