@@ -81,12 +81,34 @@ public class Wonder {
 				}
 				else {*/
 					String a[] = wonderBenefits[partsBuilding-1].split(" ");
-					for(int i = 0; i<a.length;i+=2)
+					int count = 0;
+					for(int i = 0; i<a.length-1;i++)
 					{
-						if(resource.containsKey(a[i]))
-							resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
+						if(a.length %2 ==0)
+						{
+							if(i%2==0)
+							{
+								if(resource.containsKey(a[i]))
+									resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
+								else
+									resource.put(a[i], Integer.parseInt(a[i+1]));
+							}
+						}
 						else
-							resource.put(a[i], Integer.parseInt(a[i+1]));
+						{
+							if(resource.containsKey(a[i]))
+							{
+								if(count!=2)
+								{
+									if(i%2==0)
+										resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
+									//else if(a[i].compareTo("graveyard")==0 || a[i].compareTo("free_build")==0)
+									//	resource.put(a[i], 0);
+									count++;
+								}
+							}
+						}
+							
 					}
 				//}
 			}
