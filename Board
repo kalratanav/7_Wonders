@@ -1255,4 +1255,8 @@ else if(playersWithSameVictory.get(i).equals("c"))
  isBuilt = true;
  play(choice, isPlayed, isBuilt);
   }
+  public boolean getGameRunning()
+  {
+	  return gameRunning;
+  }
 }
