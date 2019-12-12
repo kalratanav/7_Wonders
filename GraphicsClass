@@ -231,6 +231,8 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		g.drawString("Red = " + currentPlayer.getWonder().getCardsPlaced().get("Red"), 10,350);
 		g.drawString("Purple = " + currentPlayer.getWonder().getCardsPlaced().get("Purple"), 10,400);
 		g.drawString("Gold = " + currentPlayer.getWonder().getCardsPlaced().get("Yellow"), 10,450);
+		g.drawString("Green = " + currentPlayer.getWonder().getCardsPlaced().get("Green"), 10,500);
+		
 		
 		//loading next Player window
 		if(x >= 225 && x <= 650 && y >= 55 && y <= 123) {
