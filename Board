@@ -567,7 +567,22 @@ if(tradeA==false&&tradeB==false)
   				else if(rc[x].contains("glass")&&!rc[x].contains("0"))
   					resourcesNeeded.put("glass", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("glass"));
   			}
-  			if(trade(resourcesNeeded) == false)
+  			boolean b = true;
+  			if(resourcesNeeded.get("stone") - getCurrentPlayer().getWonder().getResources().get("stone")>0)
+  				b=false;
+  			else if(resourcesNeeded.get("wood") - getCurrentPlayer().getWonder().getResources().get("wood")>0)
+  				b=false;
+  			else if(resourcesNeeded.get("clay") - getCurrentPlayer().getWonder().getResources().get("clay")>0)
+  				b=false;
+  			else if(resourcesNeeded.get("ore") - getCurrentPlayer().getWonder().getResources().get("ore")>0)
+  				b=false;
+  			else if(resourcesNeeded.get("papyrus") - getCurrentPlayer().getWonder().getResources().get("papyrus")>0)
+  				b=false;
+  			else if(resourcesNeeded.get("loom") - getCurrentPlayer().getWonder().getResources().get("loom")>0)
+  				b=false;
+  			else if(resourcesNeeded.get("glass") - getCurrentPlayer().getWonder().getResources().get("glass")>0)
+  				b=false;
+  			if(b==false&&trade(resourcesNeeded)==false)
   			{
   				burnCard(c);
   				System.out.println("Ha, you can't trade for building the wonder so we made you burn it");
@@ -579,6 +594,7 @@ if(tradeA==false&&tradeB==false)
   				getCurrentPlayer().setMilitaryPoints(getCurrentPlayer().getMilitaryPoints()+getCurrentPlayer().getWonder().getMilitaryVal());
   				getCurrentPlayer().setVictoryPoints(getCurrentPlayer().getVictoryPoints()+getCurrentPlayer().getWonder().getVictoryVal());
   			}
+  				
   		}
   	}
   	else
