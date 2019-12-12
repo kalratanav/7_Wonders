@@ -908,9 +908,11 @@ return true;
   }
  
  
-  public int calcVictoryPoints(int playerNumber)
+    public int calcVictoryPoints(int playerNumber)
 {
     int victoryPoints = getPlayers()[playerNumber].getVictoryPoints();
+    TreeMap<String, Integer> scienceScoring = new TreeMap<String, Integer>();
+
     Player curr = getPlayers()[playerNumber];
     int next = 0;
     int previous = 0;
@@ -937,7 +939,6 @@ while(colors.hasNext())
 String color = colors.next();
 if(color.equals("Green"))
 {
-TreeMap<String, Integer> scienceScoring = new TreeMap<String, Integer>();
 Iterator<Card> cards = curr.getWonder().getCardsPlaced().get(color).iterator();
 while(cards.hasNext())
 {
@@ -948,15 +949,21 @@ while(cards.hasNext())
     	{
     		scienceScoring.put("gr", 1);
     	}
-    scienceScoring.put("gr", scienceScoring.get("gr")+1);
+    	else
+    	{
+         scienceScoring.put("gr", scienceScoring.get("gr")+1);
+    	}
     }
     else if(card.getEffect().contains("t"))
     {
     	if(scienceScoring.get("t")==null)
     	{
-    	    scienceScoring.put("t", 0);
+    	    scienceScoring.put("t", 1);
     	}
-    scienceScoring.put("t", scienceScoring.get("t")+1);
+    	else
+    	{
+    		scienceScoring.put("t", scienceScoring.get("t")+1);
+    	}
     }
     else if(card.getEffect().contains("st"))
     {
@@ -964,17 +971,12 @@ while(cards.hasNext())
     	{
     		scienceScoring.put("st", 1);
     	}
-    scienceScoring.put("st", scienceScoring.get("st")+1);
+    	else 
+    	{
+           scienceScoring.put("st", scienceScoring.get("st")+1);
+    	}
     }
-int gearSquared = (int)(Math.pow(scienceScoring.get("gr"), 2));
-int boardSquared = (int)(Math.pow(scienceScoring.get("t"), 2));
-int protractorSquared = (int)(Math.pow(scienceScoring.get("st"), 2));
-victoryPoints+= gearSquared + boardSquared + protractorSquared;
-if(scienceScoring.get("gr")>0&&scienceScoring.get("t")>0&&scienceScoring.get("st")>0)
-{
-victoryPoints+=7;
-}
-}
+	}
 }
 else if(!(color.equals("Brown")||color.equals("Silver")||color.equals("Purple")))
 {
@@ -1005,7 +1007,7 @@ colorToSearch = "Gray";
        {
           Card cardA = cardsA.next();
           effect = cardA.getEffect();
-          int addVictoryPoints = Integer.parseInt(effect.substring(effect.indexOf("+") + 1,effect.indexOf("vp")));
+          int addVictoryPoints = Integer.parseInt(card.getEffect().substring(card.getEffect().indexOf("vp")-1, card.getEffect().indexOf("vp")));
           victoryPoints+=addVictoryPoints;
        }
        Iterator<Card> cardsB = b.getWonder().getCardsPlaced().get(colorToSearch).iterator();
@@ -1013,10 +1015,11 @@ colorToSearch = "Gray";
        {
          Card cardB = cardsB.next();
          effect = cardB.getEffect();
-         int addVictoryPoints = Integer.parseInt(effect.substring(effect.indexOf("+") + 1,effect.indexOf("vp")));
+         int addVictoryPoints = Integer.parseInt(card.getEffect().substring(card.getEffect().indexOf("vp")-1, card.getEffect().indexOf("vp")));
          victoryPoints+=addVictoryPoints;
        }
    }
+   
    else if(card.getName().contains("Builder's guild"))
    {
     victoryPoints+=a.getWonder().getPartsBuilt()+b.getWonder().getPartsBuilt()+ getCurrentPlayer().getWonder().getPartsBuilt();
@@ -1024,7 +1027,7 @@ colorToSearch = "Gray";
    }
    else if(card.getEffect().contains("vp"))
        {
-          int num = Integer.parseInt(card.getEffect().substring(card.getEffect().indexOf("+"), card.getEffect().indexOf("vp")));
+          int num = Integer.parseInt(card.getEffect().substring(card.getEffect().indexOf("vp")-1, card.getEffect().indexOf("vp")));
         }
    else if(card.getName().contains("Shipowner's guild"))
    {
@@ -1035,15 +1038,15 @@ colorToSearch = "Gray";
    }
    else if(card.getName().contains("Strategists guild"))
    {        
-   victoryPoints+=a.getMilitaryDefeats()+b.getMilitaryDefeats();
+   victoryPoints+=Math.abs(a.getMilitaryDefeats())+Math.abs(b.getMilitaryDefeats());
    }
  }
 }
 }
-victoryPoints+=curr.getMilitaryVictories()+getCurrentPlayer().getMilitaryDefeats();
+victoryPoints+=curr.getMilitaryVictories()+curr.getMilitaryDefeats();
 int setsOfCoins = curr.getNumCoins()/3;
 victoryPoints+=setsOfCoins;
-for(int i = 0;i<curr.getWonderBenefits().size();i++)
+for(int i = 0;i<getCurrentPlayer().getWonder().getPartsBuilt();i++)
 {
 if(curr.getWonderBenefits().get(i).contains("vp"))
 {
@@ -1052,6 +1055,31 @@ int addVictoryPoints = Integer.parseInt(effect.substring(effect.indexOf("+") + 1
 victoryPoints+=addVictoryPoints;
 }
 }
+
+int gearSquared = 0;
+int boardSquared = 0;
+int protractorSquared = 0;
+if(scienceScoring.get("gr")!=null)
+{
+ gearSquared = (int)(Math.pow(scienceScoring.get("gr"), 2));
+}
+if(scienceScoring.get("t")!=null)
+{
+ boardSquared = (int)(Math.pow(scienceScoring.get("t"), 2));
+}
+if(scienceScoring.get("st")!=null)
+{
+ protractorSquared = (int)(Math.pow(scienceScoring.get("st"), 2));
+}
+victoryPoints+= gearSquared + boardSquared + protractorSquared;
+if(scienceScoring.get("t")!=null&&scienceScoring.get("gr")!=null&&scienceScoring.get("st")!=null)
+{
+if(scienceScoring.get("gr")>0&&scienceScoring.get("t")>0&&scienceScoring.get("st")>0)
+{
+victoryPoints+=7;
+}
+}
+
 return victoryPoints;
 }
   public int declareWinner()
