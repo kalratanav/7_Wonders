@@ -23,10 +23,10 @@ c0/o0/s0/w0/g1/l0/p0 0 null null Glassworks null Gray 1
 c0/o0/s0/w0/g1/l0/p0 0 null null Glassworks null Gray 1
 c0/o0/s0/w0/g0/l0/p1 0 null null Press null Gray 1
 c0/o0/s0/w0/g0/l0/p1 0 null null Press null Gray 1
-c0/o0/s0/w0/g0/l0/p0 0 null -1rightc&s&w&o East_Trading_Post null Yellow 1
-c0/o0/s0/w0/g0/l0/p0 0 null -1rightc&s&w&o East_Trading_Post null Yellow 1
-c0/o0/s0/w0/g0/l0/p0 0 null -1leftc&s&w&o West_Trading_Post null Yellow 1
-c0/o0/s0/w0/g0/l0/p0 0 null -1leftc&s&w&o West_Trading_Post null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 1 null -1rightc&s&w&o East_Trading_Post null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 1 null -1rightc&s&w&o East_Trading_Post null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 1 null -1leftc&s&w&o West_Trading_Post null Yellow 1
+c0/o0/s0/w0/g0/l0/p0 1 null -1leftc&s&w&o West_Trading_Post null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null -1bothg&l&p Marketplace null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null -1bothg&l&p Marketplace null Yellow 1
 c0/o0/s0/w0/g0/l0/p0 0 null +5coin Tavern null Yellow 1
