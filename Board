@@ -573,7 +573,12 @@ if(tradeA==false&&tradeB==false)
   				System.out.println("Ha, you can't trade for building the wonder so we made you burn it");
   			}
   			else
+  			{
   				getCurrentPlayer().getWonder().buildWonder(true);
+  				getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()+getCurrentPlayer().getWonder().getCoinVal());
+  				getCurrentPlayer().setMilitaryPoints(getCurrentPlayer().getMilitaryPoints()+getCurrentPlayer().getWonder().getMilitaryVal());
+  				getCurrentPlayer().setVictoryPoints(getCurrentPlayer().getVictoryPoints()+getCurrentPlayer().getWonder().getVictoryVal());
+  			}
   		}
   	}
   	else
