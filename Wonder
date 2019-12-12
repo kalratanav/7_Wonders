@@ -74,12 +74,12 @@ public class Wonder {
 			if(build)
 			{
 				partsBuilding++;
-				if(benefitChoices[partsBuilding-1].contains("."))
+				/*if(benefitChoices[partsBuilding-1].contains("."))
 				{
 					canAccessChoices= true;
 					
 				}
-				else {
+				else {*/
 					String a[] = wonderBenefits[partsBuilding-1].split(" ");
 					for(int i = 0; i<a.length;i+=2)
 					{
@@ -88,7 +88,7 @@ public class Wonder {
 						else
 							resource.put(a[i], Integer.parseInt(a[i+1]));
 					}
-				}
+				//}
 			}
 			return build;
 		}
