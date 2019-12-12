@@ -19,7 +19,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 public class GraphicsClass extends JPanel implements MouseListener{
 	private JFrame frame;
 	private int x,y, choice;
-	private int winner = (Integer) 4; // 4 just being a random number i made up
+	private int winner; // 4 just being a random number i made up
 	private Player currentPlayer, previousPlayer, nextPlayer;
 	private int age;
 	private Card bCard, pCard, wCard;
