@@ -95,7 +95,7 @@ public class NextPlayerWindow extends JPanel{
 		int bl = 0;
 		int r = 0;
 		int p = 0;
-		int g = 0;
+		int go = 0;
 		int gr = 0;
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 15));
 		g.drawString("Placed Cards:", 75,160);
@@ -126,8 +126,8 @@ public class NextPlayerWindow extends JPanel{
 		}
 		g.drawString("Gold = ", 25,400);
 		for(Card c : player.getWonder().getCardsPlaced().get("Yellow")) {
-			g.drawString(c.getName()+",",100 + g,400);
-			g += 75;
+			g.drawString(c.getName()+",",100 + go,400);
+			go += 75;
 		}
 		g.drawString("Green = ", 25,440);
 		for(Card c : player.getWonder().getCardsPlaced().get("Green")) {
