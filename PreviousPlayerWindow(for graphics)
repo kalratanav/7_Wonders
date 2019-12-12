@@ -123,6 +123,12 @@ public class PreviousPlayerWindow extends JPanel{
 			g.drawString(c.getName()+",",100 + i,400);
 			i += 75;
 		}
+		g.drawString("Green = ", 25,440);
+		for(Card c : player.getWonder().getCardsPlaced().get("Yellow")) {
+			g.drawString(c.getName()+",",100 + i,440);
+			i += 75;
+		}
+		g.drawString("Resources = " + currentPlayer.getWonder().getResources().toString(), 100, 480);
 	}
 
 }
