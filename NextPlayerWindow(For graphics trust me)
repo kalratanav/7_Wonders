@@ -90,43 +90,49 @@ public class NextPlayerWindow extends JPanel{
 		g.drawString("x" + player.getMilitaryDefeats(), 575, 650); //gets number of victory points
 		
 		//placed cards
-		int i = 0;
+		int b = 0;
+		int s = 0;
+		int bl = 0;
+		int r = 0;
+		int p = 0;
+		int g = 0;
+		int gr = 0;
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 15));
 		g.drawString("Placed Cards:", 75,160);
 		g.drawString("Brown = ", 25,200);
 		for(Card c : player.getWonder().getCardsPlaced().get("Brown")) {
-			g.drawString(c.getName()+",",100 + i,200);
-			i += 75;
+			g.drawString(c.getName()+",",100 + b,200);
+			b += 75;
 		}
 		g.drawString("Silver = ", 25,240);
 		for(Card c : player.getWonder().getCardsPlaced().get("Gray")) {
-			g.drawString(c.getName()+",",100 + i,240);
-			i += 75;
+			g.drawString(c.getName()+",",100 + s,240);
+			s += 75;
 		}
 		g.drawString("Blue = ", 25,280);
 		for(Card c : player.getWonder().getCardsPlaced().get("Blue")) {
-			g.drawString(c.getName()+",",100 + i,280);
-			i += 75;
+			g.drawString(c.getName()+",",100 + bl,280);
+			bl += 75;
 		}
 		g.drawString("Red = ", 25,320);
 		for(Card c : player.getWonder().getCardsPlaced().get("Red")) {
-			g.drawString(c.getName()+",",100 + i,320);
-			i += 75;
+			g.drawString(c.getName()+",",100 + r,320);
+			r += 75;
 		}
 		g.drawString("Purple = ", 25,360);
 		for(Card c : player.getWonder().getCardsPlaced().get("Purple")) {
-			g.drawString(c.getName()+",",100 + i,360);
-			i += 75;
+			g.drawString(c.getName()+",",100 + p,360);
+			p += 75;
 		}
 		g.drawString("Gold = ", 25,400);
 		for(Card c : player.getWonder().getCardsPlaced().get("Yellow")) {
-			g.drawString(c.getName()+",",100 + i,400);
-			i += 75;
+			g.drawString(c.getName()+",",100 + g,400);
+			g += 75;
 		}
-		g.drawString("Green = ", 25, 440);
+		g.drawString("Green = ", 25,440);
 		for(Card c : player.getWonder().getCardsPlaced().get("Green")) {
-			g.drawString(c.getName()+",",100 + i,440);
-			i+=75;
+			g.drawString(c.getName()+",",100 + gr,440);
+			gr += 75;
 		}
 		g.drawString("Resources = " + currentPlayer.getWonder().getResources().toString(), 100, 480);
 	}
