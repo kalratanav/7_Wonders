@@ -134,7 +134,7 @@ public class PreviousPlayerWindow extends JPanel{
 			g.drawString(c.getName()+",",100 + gr,440);
 			gr += 100;
 		}
-		g.drawString("Resources = " + currentPlayer.getWonder().getResources().toString(), 100, 480);
+		g.drawString("Resources = " + player.getWonder().getResources().toString(), 100, 480);
 	}
 
 }
