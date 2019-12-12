@@ -13,8 +13,12 @@ public class Wonder {
 	private boolean canAccessChoices;
 	private String key;
 	private int amount;
+	private int coinVal;
+	private int victoryVal;
+	private int militaryVal;
 	public Wonder(String wonder)
 	{
+		victoryVal=0; coinVal=0; militaryVal=0;
 		resource = new TreeMap<String, Integer>();
 		defaultResource = "";
 		cardsPlaced = new TreeMap<String, HashSet<Card>>();
@@ -92,6 +96,12 @@ public class Wonder {
 									resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
 								else
 									resource.put(a[i], Integer.parseInt(a[i+1]));
+								if(a[i].equals("vp"))
+									victoryVal+=Integer.parseInt(a[i+1]);
+								else if(a[i].equals("mp"))
+									militaryVal+=Integer.parseInt(a[i+1]);
+								else if(a[i].equals("coins"))
+									coinVal+=Integer.parseInt(a[i+1]);
 							}
 						}
 						else
@@ -104,6 +114,12 @@ public class Wonder {
 										resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
 									//else if(a[i].compareTo("graveyard")==0 || a[i].compareTo("free_build")==0)
 									//	resource.put(a[i], 0);
+									if(a[i].equals("vp"))
+										victoryVal+=Integer.parseInt(a[i+1]);
+									else if(a[i].equals("mp"))
+										militaryVal+=Integer.parseInt(a[i+1]);
+									else if(a[i].equals("coins"))
+										coinVal+=Integer.parseInt(a[i+1]);
 									count++;
 								}
 							}
@@ -563,5 +579,17 @@ public class Wonder {
 	public String[] getWonderBenefits()
 	{
 		return wonderBenefits;
+	}
+	public int getVictoryVal()
+	{
+		return victoryVal;
+	}
+	public int getCoinVal()
+	{
+		return coinVal;
+	}
+	public int getMilitaryVal()
+	{
+		return militaryVal;
 	}
 }
