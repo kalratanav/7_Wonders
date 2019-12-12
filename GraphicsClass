@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
@@ -43,6 +44,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{
 		//background
+		Toolkit.getDefaultToolkit().sync();
 		try {
 			BufferedImage background = ImageIO.read(new File("Background.jpg"));
 			g.drawImage(background, 0,0, frame);
@@ -53,7 +55,7 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		if(winner != 4) {
 			
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
-			g.drawString("Player " + winner + "Wins", 950,700);
+			g.drawString("Player " + winner + "Wins", 800,300);
 		} 
 		
 		//draw rectangle
@@ -249,7 +251,9 @@ public class GraphicsClass extends JPanel implements MouseListener{
 			x = 0;
 			y = 0;
 		}
+		Toolkit.getDefaultToolkit().sync();
 		repaint();
+		revalidate();
 		
 	}
 	
@@ -281,7 +285,6 @@ public class GraphicsClass extends JPanel implements MouseListener{
 		y = e.getY();
 		System.out.println(x + " " + y);
 		
-		repaint();	
 	}
 	
 	public void setAge(int a) {
