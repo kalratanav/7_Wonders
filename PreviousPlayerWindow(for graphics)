@@ -102,39 +102,40 @@ public class PreviousPlayerWindow extends JPanel{
 		g.drawString("Brown = ", 25,200);
 		for(Card c : player.getWonder().getCardsPlaced().get("Brown")) {
 			g.drawString(c.getName()+",",100 + b,200);
-			b += 100;
+			b += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Silver = ", 25,240);
 		for(Card c : player.getWonder().getCardsPlaced().get("Gray")) {
 			g.drawString(c.getName()+",",100 + s,240);
-			s += 100;
+			s += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Blue = ", 25,280);
 		for(Card c : player.getWonder().getCardsPlaced().get("Blue")) {
 			g.drawString(c.getName()+",",100 + bl,280);
-			bl += 100;
+			bl += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Red = ", 25,320);
 		for(Card c : player.getWonder().getCardsPlaced().get("Red")) {
 			g.drawString(c.getName()+",",100 + r,320);
-			r += 100;
+			r += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Purple = ", 25,360);
 		for(Card c : player.getWonder().getCardsPlaced().get("Purple")) {
 			g.drawString(c.getName()+",",100 + p,360);
-			p += 100;
+			p += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Gold = ", 25,400);
 		for(Card c : player.getWonder().getCardsPlaced().get("Yellow")) {
 			g.drawString(c.getName()+",",100 + go,400);
-			go += 100;
+			go += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Green = ", 25,440);
 		for(Card c : player.getWonder().getCardsPlaced().get("Green")) {
 			g.drawString(c.getName()+",",100 + gr,440);
-			gr += 100;
+			gr += (Math.ceil(c.getName().length()/10.0))*150;
 		}
 		g.drawString("Resources = " + player.getWonder().getResources().toString(), 100, 480);
+		g.drawString("Parts Built: " + player.getWonder().getPartsBuilt(), 100, 580 );
 	}
 
 }
