@@ -96,12 +96,21 @@ public class Wonder {
 									resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
 								else
 									resource.put(a[i], Integer.parseInt(a[i+1]));
-								if(a[i].equals("vp"))
+								if(a[i].contains("vp"))
+								{
 									victoryVal+=Integer.parseInt(a[i+1]);
-								else if(a[i].equals("mp"))
+									System.out.println(victoryVal);
+								}
+								else if(a[i].contains("mp"))
+								{
 									militaryVal+=Integer.parseInt(a[i+1]);
-								else if(a[i].equals("coins"))
+									System.out.println(militaryVal);
+								}
+								else if(a[i].contains("coins"))
+								{
 									coinVal+=Integer.parseInt(a[i+1]);
+									System.out.println(coinVal);
+								}
 							}
 						}
 						else
@@ -114,11 +123,11 @@ public class Wonder {
 										resource.put(a[i], resource.get(a[i])+(Integer.parseInt(a[i+1])));
 									//else if(a[i].compareTo("graveyard")==0 || a[i].compareTo("free_build")==0)
 									//	resource.put(a[i], 0);
-									if(a[i].equals("vp"))
+									if(a[i].contains("vp"))
 										victoryVal+=Integer.parseInt(a[i+1]);
-									else if(a[i].equals("mp"))
+									else if(a[i].contains("mp"))
 										militaryVal+=Integer.parseInt(a[i+1]);
-									else if(a[i].equals("coins"))
+									else if(a[i].contains("coins"))
 										coinVal+=Integer.parseInt(a[i+1]);
 									count++;
 								}
@@ -591,5 +600,17 @@ public class Wonder {
 	public int getMilitaryVal()
 	{
 		return militaryVal;
+	}
+	public void setCoinVal(int i) {
+		coinVal=i;
+		
+	}
+	public void setMilitaryVal(int i) {
+		// TODO Auto-generated method stub
+		militaryVal=i;
+	}
+	public void setVictoryVal(int i) {
+		// TODO Auto-generated method stub
+		victoryVal = i;
 	}
 }
