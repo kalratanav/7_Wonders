@@ -465,33 +465,67 @@ if(tradeA==false&&tradeB==false)
 			  resourcesNeeded.put("glass", Integer.parseInt(""+rc[x].charAt(1)));
 	  }
 	  boolean b = true;
-	  if(!(resourcesNeeded.get("stone")==null)&&!(getCurrentPlayer().getWonder().getResources().get("stone")==null)&&resourcesNeeded.get("stone")>getCurrentPlayer().getWonder().getResources().get("stone"))
-		  b=false;
-	  if(!(resourcesNeeded.get("wood")==null)&&!(getCurrentPlayer().getWonder().getResources().get("wood")==null)&&resourcesNeeded.get("wood")>getCurrentPlayer().getWonder().getResources().get("wood"))
-		  b=false;
-	  if(!(resourcesNeeded.get("clay")==null)&&!(getCurrentPlayer().getWonder().getResources().get("clay")==null)&&resourcesNeeded.get("clay")>getCurrentPlayer().getWonder().getResources().get("clay"))
-		  b=false;
-	  if(!(resourcesNeeded.get("ore")==null)&&!(getCurrentPlayer().getWonder().getResources().get("ore")==null)&&resourcesNeeded.get("ore")>getCurrentPlayer().getWonder().getResources().get("ore"))
-		  b=false;
-	  if(!(resourcesNeeded.get("papyrus")==null)&&!(getCurrentPlayer().getWonder().getResources().get("papyrus")==null)&&resourcesNeeded.get("papyrus")>getCurrentPlayer().getWonder().getResources().get("papyrus"))
-		  b=false;
-	  if(!(resourcesNeeded.get("loom")==null)&&!(getCurrentPlayer().getWonder().getResources().get("loom")==null)&&resourcesNeeded.get("loom")>getCurrentPlayer().getWonder().getResources().get("loom"))
-		  b=false;
-	  if(!(resourcesNeeded.get("glass")==null)&&!(getCurrentPlayer().getWonder().getResources().get("glass")==null)&&resourcesNeeded.get("glass")>getCurrentPlayer().getWonder().getResources().get("glass"))
-		  b=false;
+	  if(!(resourcesNeeded.get("stone")==null)&&resourcesNeeded.get("stone")>0)
+	  {
+		  if(resourcesNeeded.get("stone")>getCurrentPlayer().getWonder().getResources().get("stone"))
+		  		b=false;
+	  }
+		  
+	  if(!(resourcesNeeded.get("wood")==null)&&resourcesNeeded.get("wood")>0)
+	  {
+		  if(resourcesNeeded.get("wood")>getCurrentPlayer().getWonder().getResources().get("wood"))
+			  b=false;
+	  }
+	  if(!(resourcesNeeded.get("clay")==null)&&resourcesNeeded.get("clay")>0)
+	  {
+		  if(resourcesNeeded.get("clay")>getCurrentPlayer().getWonder().getResources().get("clay"))
+			  b=false;
+	  }
+	  if(!(resourcesNeeded.get("ore")==null)&&resourcesNeeded.get("ore")>0)
+	  {
+		  if(resourcesNeeded.get("ore")>getCurrentPlayer().getWonder().getResources().get("ore"))
+			  b=false;
+	  }
+	  if(!(resourcesNeeded.get("papyrus")==null)&&resourcesNeeded.get("papyrus")>0)
+	  {
+		  if(resourcesNeeded.get("papyrus")>getCurrentPlayer().getWonder().getResources().get("papyrus"))
+			  b=false;
+	  }
+	  if(!(resourcesNeeded.get("loom")==null)&&resourcesNeeded.get("loom")>0)
+	  {
+		  if(resourcesNeeded.get("loom")>getCurrentPlayer().getWonder().getResources().get("loom"))
+			  b=false;
+	  }
+	  if(!(resourcesNeeded.get("glass")==null)&&resourcesNeeded.get("glass")>0)
+	  {
+		  if(resourcesNeeded.get("glass")>getCurrentPlayer().getWonder().getResources().get("glass"))
+			  b=false;
+	  }
 	  if(c.getCost()>getCurrentPlayer().getNumCoins())
 		  b=false;
 	  if(b)
 	  {
+		  getCurrentPlayer().getWonder().setCoinVal(0);
+		  getCurrentPlayer().getWonder().setMilitaryVal(0);
+		  getCurrentPlayer().getWonder().setVictoryVal(0);
 		  decode(c);
 		  getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()-c.getCost());
 		  getCurrentPlayer().getWonder().playedCard(c);
+		  getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()+getCurrentPlayer().getWonder().getCoinVal());
+		  getCurrentPlayer().setMilitaryPoints(getCurrentPlayer().getMilitaryPoints()+getCurrentPlayer().getWonder().getMilitaryVal());
+		  getCurrentPlayer().setVictoryPoints(getCurrentPlayer().getVictoryPoints()+getCurrentPlayer().getWonder().getVictoryVal());
 	  }
 	  else if(trade(resourcesNeeded)&&getCurrentPlayer().getNumCoins()-c.getCost()>=0)
 	  {
 		  getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()-c.getCost());
+		  getCurrentPlayer().getWonder().setCoinVal(0);
+		  getCurrentPlayer().getWonder().setMilitaryVal(0);
+		  getCurrentPlayer().getWonder().setVictoryVal(0);
 		  decode(c);
 		  getCurrentPlayer().getWonder().playedCard(c);
+		  getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()+getCurrentPlayer().getWonder().getCoinVal());
+		  getCurrentPlayer().setMilitaryPoints(getCurrentPlayer().getMilitaryPoints()+getCurrentPlayer().getWonder().getMilitaryVal());
+		  getCurrentPlayer().setVictoryPoints(getCurrentPlayer().getVictoryPoints()+getCurrentPlayer().getWonder().getVictoryVal());
 	  }
 	  else
 	  {
@@ -501,6 +535,9 @@ if(tradeA==false&&tradeB==false)
   }
   else if(builtWonder)
   {
+	  getCurrentPlayer().getWonder().setCoinVal(0);
+	  getCurrentPlayer().getWonder().setMilitaryVal(0);
+	  getCurrentPlayer().getWonder().setVictoryVal(0);
 	  boolean canBuild = getCurrentPlayer().getWonder().buildWonder(false);
 	  boolean canTrade;
   		if(canBuild)
@@ -516,32 +553,75 @@ if(tradeA==false&&tradeB==false)
   	  		TreeMap<String, Integer> resourcesNeeded = new TreeMap<String, Integer>();
   	  		for(int x = 0; x< rc.length; x=x+2)
   	  		{
-  	  			if(rc[x].contains("stone"))
+  	  			if(rc[x].contains("stone")&&getCurrentPlayer().getWonder().getResources().get("stone")!=null)
   	  				resourcesNeeded.put("stone", Integer.parseInt(rc[x+1]) - getCurrentPlayer().getWonder().getResources().get("stone"));
-  	  			else if(rc[x].contains("wood"))
+  	  			else if(rc[x].contains("wood")&&getCurrentPlayer().getWonder().getResources().get("wood")!=null)
   	  				resourcesNeeded.put("wood", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("wood"));
-  	  			else if(rc[x].contains("clay"))
+  	  			else if(rc[x].contains("clay")&&getCurrentPlayer().getWonder().getResources().get("clay")!=null)
   	  				resourcesNeeded.put("clay", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("clay"));
-  	  			else if(rc[x].contains("ore")&&!rc[x].contains("0"))
+  	  			else if(rc[x].contains("ore")&&!rc[x].contains("0")&&getCurrentPlayer().getWonder().getResources().get("ore")!=null)
   	  				resourcesNeeded.put("ore", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("ore"));
-  	  			else if(rc[x].contains("papyrus")&&!rc[x].contains("0"))
+  	  			else if(rc[x].contains("papyrus")&&!rc[x].contains("0")&&getCurrentPlayer().getWonder().getResources().get("papyrus")!=null)
   	  				resourcesNeeded.put("papyrus", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("papyrus"));
-  	  			else if(rc[x].contains("loom")&&!rc[x].contains("0"))
+  	  			else if(rc[x].contains("loom")&&!rc[x].contains("0")&&getCurrentPlayer().getWonder().getResources().get("loom")!=null)
   	  				resourcesNeeded.put("loom", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("loom"));
-  	  			else if(rc[x].contains("glass")&&!rc[x].contains("0"))
+  	  			else if(rc[x].contains("glass")&&!rc[x].contains("0")&&getCurrentPlayer().getWonder().getResources().get("glass")!=null)
   	  				resourcesNeeded.put("glass", Integer.parseInt(rc[x+1])-getCurrentPlayer().getWonder().getResources().get("glass"));
+  	  		boolean b = true;
+  		  if(!(resourcesNeeded.get("stone")==null)&&resourcesNeeded.get("stone")>0)
+  		  {
+  			  if(resourcesNeeded.get("stone")>getCurrentPlayer().getWonder().getResources().get("stone"))
+  			  		b=false;
+  		  }
+  			  
+  		  if(!(resourcesNeeded.get("wood")==null)&&resourcesNeeded.get("wood")>0)
+  		  {
+  			  if(resourcesNeeded.get("wood")>getCurrentPlayer().getWonder().getResources().get("wood"))
+  				  b=false;
+  		  }
+  		  if(!(resourcesNeeded.get("clay")==null)&&resourcesNeeded.get("clay")>0)
+  		  {
+  			  if(resourcesNeeded.get("clay")>getCurrentPlayer().getWonder().getResources().get("clay"))
+  				  b=false;
+  		  }
+  		  if(!(resourcesNeeded.get("ore")==null)&&resourcesNeeded.get("ore")>0)
+  		  {
+  			  if(resourcesNeeded.get("ore")>getCurrentPlayer().getWonder().getResources().get("ore"))
+  				  b=false;
+  		  }
+  		  if(!(resourcesNeeded.get("papyrus")==null)&&resourcesNeeded.get("papyrus")>0)
+  		  {
+  			  if(resourcesNeeded.get("papyrus")>getCurrentPlayer().getWonder().getResources().get("papyrus"))
+  				  b=false;
+  		  }
+  		  if(!(resourcesNeeded.get("loom")==null)&&resourcesNeeded.get("loom")>0)
+  		  {
+  			  if(resourcesNeeded.get("loom")>getCurrentPlayer().getWonder().getResources().get("loom"))
+  				  b=false;
+  		  }
+  		  if(!(resourcesNeeded.get("glass")==null)&&resourcesNeeded.get("glass")>0)
+  		  {
+  			  if(resourcesNeeded.get("glass")>getCurrentPlayer().getWonder().getResources().get("glass"))
+  				  b=false;
+  		  }
+  		  if(c.getCost()>getCurrentPlayer().getNumCoins())
+  			  b=false;
+  	  			
   	  		}
-  	  		canTrade = trade(resourcesNeeded);
-  	  		if(canTrade)
-  	  		{
-  	  			getCurrentPlayer().getWonder().buildWonder(true);
-  	  			getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()+getCurrentPlayer().getWonder().getCoinVal());
-  	  			getCurrentPlayer().setMilitaryPoints(getCurrentPlayer().getMilitaryPoints()+getCurrentPlayer().getWonder().getMilitaryVal());
-  	  			getCurrentPlayer().setVictoryPoints(getCurrentPlayer().getVictoryPoints()+getCurrentPlayer().getWonder().getVictoryVal());
-  	  		
-  	  		}
-  	  		else
-	    		burnCard(c);
+  	  	canTrade = trade(resourcesNeeded);
+	  		if(canTrade)
+	  		{
+	  			getCurrentPlayer().getWonder().buildWonder(true);
+	  			getCurrentPlayer().setCoins(getCurrentPlayer().getNumCoins()+getCurrentPlayer().getWonder().getCoinVal());
+	  			getCurrentPlayer().setMilitaryPoints(getCurrentPlayer().getMilitaryPoints()+getCurrentPlayer().getWonder().getMilitaryVal());
+	  			getCurrentPlayer().setVictoryPoints(getCurrentPlayer().getVictoryPoints()+getCurrentPlayer().getWonder().getVictoryVal());
+	  		
+	  		}
+	  		else
+	  		{
+	  			System.out.println("You can't trade to build the wonder so we burned it for you");
+	  			burnCard(c);
+	  		}
   	  		
   		}
   }
