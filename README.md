@@ -16,3 +16,4 @@ Created by:
 - Jackson Forrest
 
 2020
+MIT License 2022
